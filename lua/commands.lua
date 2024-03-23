@@ -1,45 +1,69 @@
+local map = require 'utils.map'
 local command = vim.api.nvim_create_user_command
 
 -- Create the "Settings" command
-command("Settings", function()
-    -- Save the current directory
-    local current_dir = vim.fn.getcwd()
+command('Settings', function()
+  -- Save the current directory
+  local current_dir = vim.fn.getcwd()
 
-    -- Get the value of $XDG_CONFIG_HOME
-    local xdg_config_home = os.getenv("XDG_CONFIG_HOME")
+  -- Get the value of $XDG_CONFIG_HOME
+  local xdg_config_home = os.getenv 'XDG_CONFIG_HOME'
 
-    -- If $XDG_CONFIG_HOME is not set, use the default value
-    if xdg_config_home == nil then
-        xdg_config_home = os.getenv("HOME") .. "/.config"
-    end
+  -- If $XDG_CONFIG_HOME is not set, use the default value
+  if xdg_config_home == nil then
+    xdg_config_home = os.getenv 'HOME' .. '/.config'
+  end
 
-    -- Construct the path to the Neovim configuration directory
-    local nvim_config_dir = xdg_config_home .. "/nvim"
+  -- Construct the path to the Neovim configuration directory
+  local nvim_config_dir = xdg_config_home .. '/nvim'
 
-    -- Open a new terminal buffer
-    vim.cmd("terminal")
+  -- Open a new terminal buffer
+  vim.cmd 'terminal'
 
-    -- Get the current buffer number
-    local buf = vim.api.nvim_get_current_buf()
+  -- Get the current buffer number
+  local buf = vim.api.nvim_get_current_buf()
 
-    -- Send the `cd` command to the terminal buffer
-    vim.api.nvim_chan_send(buf, "cd " .. nvim_config_dir .. "\n")
+  -- Send the `cd` command to the terminal buffer
+  vim.api.nvim_chan_send(buf, 'cd ' .. nvim_config_dir .. '\n')
 
-    -- Send the command to open the init.lua file in the terminal buffer
-    vim.api.nvim_chan_send(buf, "nvim init.lua\n")
+  -- Send the command to open the init.lua file in the terminal buffer
+  vim.api.nvim_chan_send(buf, 'nvim init.lua\n')
 
-    -- Create an autocommand to restore the directory when the terminal buffer is closed
-    vim.cmd("autocmd TermClose <buffer> lcd " .. current_dir)
+  -- Create an autocommand to restore the directory when the terminal buffer is closed
+  vim.cmd('autocmd TermClose <buffer> lcd ' .. current_dir)
 end, {})
 
-command("Snippets", function()
-    -- open user snippets directory at $XDG_CONFIG_HOME/nvim/snippets/
+command('Snippets', function()
+  -- open user snippets directory at $XDG_CONFIG_HOME/nvim/snippets/
+end, {})
 
-end, {}
+-- Create the AddCursorsToVisualSelection function in the global scope
+function Add_cursors_to_visual_selection(start_line, end_line)
+    -- Move the cursor to the start line of the selection
+    vim.fn.cursor({ start_line, 1 })
+
+    -- Add cursors to each line of the selection
+    for _ = start_line, end_line - 1 do
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(VM-Add-Cursor-Down)", true, false, true), "n")
+    end
+end
+
+-- Make the function accessible to the command
+vim.api.nvim_set_var("Add_cursors_to_visual_selection", Add_cursors_to_visual_selection)
+
+-- Create a custom command that accepts a range
+vim.api.nvim_exec(
+    [[
+    command! -range AddCursorsToVisualSelection lua vim.api.nvim_get_var("Add_cursors_to_visual_selection")(tonumber(vim.fn.line("'<")), tonumber(vim.fn.line("'>")))
+    ]],
+    false
 )
 
-command("Sourcemedaddy", function()
-    vim.cmd("source %")
+-- Map the custom command to a key combination
+map("v", "<C-S-l>", ":AddCursorsToVisualSelection<CR>", { noremap = true, desc = "Add cursor per line selected" })
+
+command('SourceCurrentLuaConfigFile', function()
+  vim.cmd 'source %'
 end, {})
 
-command("Git", "LazyGit", {})
+command('Git', 'LazyGit', {})

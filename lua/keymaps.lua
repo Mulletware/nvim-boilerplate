@@ -150,6 +150,8 @@ map('n', '<expr><tab>', '<C-l>', { desc = 'Tab based completion' })
 -- map Ctrl+Shift+Enter to ZenMode
 map({ 'n', 'i', 'v' }, '<C-S-Enter>', '<cmd>ZenMode<cr>', { desc = 'Zen Mode' })
 
+-- map Ctrl+Shift+K to add cursor above
+map({ 'n', 'i', 'v' }, '<C-S-K>', '<Plug>(VM-Add-Cursor-Up)', { desc = 'Add cursor above' })
 
--- map Ctrl+Shift+k to go to definition
-map('n', '<C-S-k>', ': gd<cr>', { desc = 'Go to definition' })
+-- map Ctrl+Shift+J to add cursor below
+map({ 'n', 'i', 'v' }, '<C-S-J>', '<Plug>(VM-Add-Cursor-Below)', { desc = 'Add cursor below' })
