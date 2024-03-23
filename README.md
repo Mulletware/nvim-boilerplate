@@ -1,3 +1,30 @@
+# Mulletware Neovim Configuration
+You can install [Neovim](https://neovim.io/) and clone this repo directly to ~/.config/nvim to get started (`git clone https://github.com/mulletware/nvim-boilerplate --depth=1 ~/.config/nvim`)
+
+For a more complete experience, use [Neovide](https://neovide.dev/) as your terminal emulator.
+
+If you want to make changes to this configuration, it is best to fork this project under your own github account, then follow Mulletware's process for [ Managing Forked Projects ]( https://wiki.mulletware.io/en/code/vcs/upstreams/forked ) for incorporating any future updates to the boilerplate into your own version of the config project.
+
+
+The important files you may want to edit are located at:
+- ./lua/plugins/init.lua <-- most plugins are listed here, some are in ./init.lua
+- ./lua/keymaps.lua 
+- ./lua/commands.lua 
+- ./snippets/*.lua -- [language].lua, using [Snipmate](https://github.com/msanders/snipmate.vim) (:h luasnip-lsp-snippets-snipmate-parser)
+
+
+Hotkeys:
+Toggle File Tree: Ctrl+b
+Fuzzy find file: Ctrl+p
+Run Vim command: :, ;, Ctrl+Shift+p
+Run terminal command: !
+Run terminal command, output to buffer: Ctrl+1
+Indent/Unindent: Ctrl+], Ctrl+[
+Open directory by path: ~
+Comment lines: Ctrl+/
+Comment block: gc[pattern]
+
+# Original kickstart.nvim Readme.md:
 # kickstart.nvim
 
 ## Introduction
