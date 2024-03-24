@@ -4,7 +4,7 @@
 -- Some necessary plumbing needs to be done to have an experience similar to the one found in modern
 -- editors and originally spearheaded by Sublime Text
 
-local map = require 'utils/map'
+local map = require 'utils.map'
 
 -- Detach vim's ancient equivalence between <Esc> and <C-[>
 map('i', '<Esc>', '<Esc>', {noremap = true})

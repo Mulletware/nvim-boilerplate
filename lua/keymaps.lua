@@ -123,10 +123,10 @@ map(
 )
 
 -- map Ctrl + o to open project
-map('n', '<C-o>', ':cd ~/', { noremap = true, desc = 'Open Project' })
+map('n', '<Leader>oo', ':cd ~/', { noremap = true, desc = 'Open Project' })
 
 -- map Ctrl + Shift + o to open file
-map('n', '<C-S-o>', ':e ', { noremap = true, desc = 'Open File' })
+map('n', '<Leader>of', ':e ', { noremap = true, desc = 'Open File' })
 
 -- map ~ to open project
 map('n', '~', ':cd ~/', { noremap = true, desc = 'Open Home Directory' })
@@ -158,24 +158,39 @@ map({ 'n', 'i', 'v' }, '<C-S-K>', '<Plug>(VM-Add-Cursor-Up)', { desc = 'Add curs
 -- map Ctrl+Shift+J to add cursor below
 map({ 'n', 'i', 'v' }, '<C-S-J>', '<Plug>(VM-Add-Cursor-Below)', { desc = 'Add cursor below' })
 
-
-local ls = require("luasnip")
+local ls = require 'luasnip'
 
 -- Set up mappings for LuaSnip
-vim.keymap.set({ "i", "s" }, "<Tab>", function()
+vim.keymap.set({ 'i', 's' }, '<Tab>', function()
   if ls.expand_or_jumpable() then
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "", true)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '', true)
   else
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "n", true)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, true, true), 'n', true)
   end
 end, { silent = true })
 
-vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
+vim.keymap.set({ 'i', 's' }, '<S-Tab>', function()
   if ls.jumpable(-1) then
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "", true)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '', true)
   else
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<S-Tab>", true, true, true), "n", true)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<S-Tab>', true, true, true), 'n', true)
   end
 end, { silent = true })
 
-require "user.keymaps"
+
+-- harpoon keymappings
+map('n', '<Leader>d', function()
+  require('harpoon'):list():append()
+end, { desc = 'Harpoon Add' })
+
+map('n', '<Leader>ad', function()
+  require('harpoon.ui').toggle_quick_menu()
+end, { desc = 'Harpoon Menu' })
+
+
+-- Undo/Redo
+map({ 'n', 'i', 'v' }, "<C-z>", "u", { desc = 'Undo' })
+map({ 'n', 'i', 'v' }, "<C-y>", "<C-r>", { desc = 'Redo' })
+map({ 'n', 'i', 'v' }, "<C-S-z>", "<C-r>", { desc = 'Redo' })
+
+require 'user.keymaps'

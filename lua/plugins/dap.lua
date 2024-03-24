@@ -96,5 +96,5 @@ return {
       command = 'node',
       args = { '~/src/vscode-php-debug/out/phpDebug.js' },
     }
-  end
+  end,
 }

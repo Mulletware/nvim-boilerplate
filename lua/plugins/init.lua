@@ -42,22 +42,10 @@ return {
     },
   },
 
-  { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
-
   {
-    'folke/noice.nvim',
-    event = 'VeryLazy',
-    opts = {
-      -- add any options here
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      'MunifTanjim/nui.nvim',
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      -- 'rcarriga/nvim-notify',
-    },
+    'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
+    opts = {},
   },
 
   {
@@ -84,9 +72,7 @@ return {
     end,
   },
 
-  {
-    'Mohammed-Taher/AdvancedNewFile.nvim',
-  },
+  'Mohammed-Taher/AdvancedNewFile.nvim',
 
   {
     'ibhagwan/fzf-lua',
@@ -144,16 +130,30 @@ return {
     dependencies = { { 'nvim-tree/nvim-web-devicons' } },
   },
 
-  {
-    'folke/zen-mode.nvim',
-  },
+  'theprimeagen/harpoon',
 
   {
     'jbyuki/instant.nvim',
     config = function()
       vim.g.instant_username = 'dabstractor'
-      vim.g.instant_server_url = "ws://mulletware:3030"
-    end
+      vim.g.instant_server_url = 'ws://mulletware:3030'
+    end,
+  },
+
+  {
+    'folke/noice.nvim',
+    event = 'VeryLazy',
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      'MunifTanjim/nui.nvim',
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      -- 'rcarriga/nvim-notify',
+    },
   },
 
   {
@@ -164,6 +164,7 @@ return {
         icons = true,
       }
     end,
+  },
 
-  }
+  'folke/zen-mode.nvim',
 }

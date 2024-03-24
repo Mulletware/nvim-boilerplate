@@ -87,7 +87,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
-require 'plugins/filetree'
+require 'plugins.filetree'
 require 'config'
 require 'autocmd'
 require 'lazy-kickstart'
@@ -152,7 +152,7 @@ require('lazy').setup({
   -- after the plugin has been loaded:
   --  config = function() ... end
 
-  require 'plugins/which-key',
+  require 'plugins.which-key',
 
   -- NOTE: Plugins can specify dependencies.
   --
@@ -271,12 +271,12 @@ require('lazy').setup({
     end,
   },
   require 'lsp',
-  require 'plugins/conform',
-  require 'plugins/cmp',
-  require 'plugins/theme',
-  require 'plugins/todo-comments',
-  require 'plugins/mini',
-  require 'plugins/treesitter',
+  require 'plugins.conform',
+  require 'plugins.cmp',
+  require 'plugins.theme',
+  require 'plugins.todo-comments',
+  require 'plugins.mini',
+  require 'plugins.treesitter',
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
