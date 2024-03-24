@@ -33,9 +33,9 @@ command('Settings', function()
   vim.cmd('autocmd TermClose <buffer> lcd ' .. current_dir)
 end, {})
 
-command('Snippets', function()
-  -- open user snippets directory at $XDG_CONFIG_HOME/nvim/snippets/
-end, {})
+-- command('Snippets', function()
+--   -- open user snippets directory at $XDG_CONFIG_HOME/nvim/snippets/
+-- end, {})
 
 -- Create the VMAddCursorsToVisualSelection function in the global scope
 function Add_cursors_to_visual_selection(start_line, end_line)
@@ -60,10 +60,8 @@ vim.api.nvim_exec(
 )
 
 -- Map the custom command to a key combination
-map("v", "<C-S-l>", ":VMAddCursorsToVisualSelectionCR", { noremap = true, desc = "Add cursor per line selected" })
-
-command('SourceCurrentLuaConfigFile', ":source %" , {})
+map("v", "<C-S-l>", ":VMAddCursorsToVisualSelection<CR>", { noremap = true, desc = "Add cursor per line selected" })
 
 command('Git', 'LazyGit', {})
 
--- command("Delete_current_file", ":!rm %" , {})
+-- command("Delete_current_file", ":!rm %", {})

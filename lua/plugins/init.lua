@@ -56,7 +56,7 @@ return {
       -- OPTIONAL:
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
-      'rcarriga/nvim-notify',
+      -- 'rcarriga/nvim-notify',
     },
   },
 
@@ -74,11 +74,6 @@ return {
     opts = {},
     -- Optional dependencies
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-  },
-
-  {
-    'ThePrimeagen/harpoon',
-    opts = {},
   },
 
   {
@@ -144,9 +139,7 @@ return {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
     config = function()
-      require('dashboard').setup {
-        -- config
-      }
+      require('dashboard').setup {}
     end,
     dependencies = { { 'nvim-tree/nvim-web-devicons' } },
   },
@@ -154,4 +147,23 @@ return {
   {
     'folke/zen-mode.nvim',
   },
+
+  {
+    'jbyuki/instant.nvim',
+    config = function()
+      vim.g.instant_username = 'dabstractor'
+      vim.g.instant_server_url = "ws://mulletware:3030"
+    end
+  },
+
+  {
+    'folke/trouble.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('trouble').setup {
+        icons = true,
+      }
+    end,
+
+  }
 }

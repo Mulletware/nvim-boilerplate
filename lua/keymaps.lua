@@ -83,7 +83,8 @@ map('i', '<C-d>', '<Plug>(VM-Insert-Cursor-At-EndOfEachLine)', { noremap = true,
 -- Skip instance
 map({ 'n', 'i', 'v' }, '<C-k>', '<Plug>(VM-Skip-Region)', { noremap = true, silent = true, desc = 'Skip instance (Normal Mode)' })
 
--- map({'n', 'i', 'v'}, '<C-S-t>', ':tabnew#', {noremap = true, silent = true, desc = "Open previously closed tab" })
+-- map Ctrl+Shift+t to reopen last closed tab with :lua require("harpoon.ui").nav_next()
+map({ 'n', 'i' }, '<C-S-t>', '<cmd>lua require("harpoon.ui").nav_next()<cr>', { desc = 'Reopen last closed tab' })
 
 -- map Ctrl + b to Neotree open
 map({ 'n', 'i' }, '<C-b>', '<cmd>NvimTreeToggle<cr>', { desc = 'Toggle Neotree (Normal Mode)' })
@@ -120,8 +121,6 @@ map(
   '<Cmd>lua require("Comment.api").toggle.blockwise(vim.fn.visualmode())<CR>',
   { noremap = true, silent = true, desc = 'Comment block (Visual Mode)' }
 )
-
-map('n', '<C-S-t>', ':lua g:reopen_last_tab()', { noremap = true, silent = true })
 
 -- map Ctrl + o to open project
 map('n', '<C-o>', ':cd ~/', { noremap = true, desc = 'Open Project' })
