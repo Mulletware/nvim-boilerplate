@@ -37,7 +37,7 @@ command('Snippets', function()
   -- open user snippets directory at $XDG_CONFIG_HOME/nvim/snippets/
 end, {})
 
--- Create the AddCursorsToVisualSelection function in the global scope
+-- Create the VMAddCursorsToVisualSelection function in the global scope
 function Add_cursors_to_visual_selection(start_line, end_line)
     -- Move the cursor to the start line of the selection
     vim.fn.cursor({ start_line, 1 })
@@ -54,16 +54,16 @@ vim.api.nvim_set_var("Add_cursors_to_visual_selection", Add_cursors_to_visual_se
 -- Create a custom command that accepts a range
 vim.api.nvim_exec(
     [[
-    command! -range AddCursorsToVisualSelection lua vim.api.nvim_get_var("Add_cursors_to_visual_selection")(tonumber(vim.fn.line("'<")), tonumber(vim.fn.line("'>")))
+    command! -range VMAddCursorsToVisualSelection lua vim.api.nvim_get_var("Add_cursors_to_visual_selection")(tonumber(vim.fn.line("'<")), tonumber(vim.fn.line("'>")))
     ]],
     false
 )
 
 -- Map the custom command to a key combination
-map("v", "<C-S-l>", ":AddCursorsToVisualSelection<CR>", { noremap = true, desc = "Add cursor per line selected" })
+map("v", "<C-S-l>", ":VMAddCursorsToVisualSelectionCR", { noremap = true, desc = "Add cursor per line selected" })
 
-command('SourceCurrentLuaConfigFile', function()
-  vim.cmd 'source %'
-end, {})
+command('SourceCurrentLuaConfigFile', ":source %" , {})
 
 command('Git', 'LazyGit', {})
+
+-- command("Delete_current_file", ":!rm %" , {})

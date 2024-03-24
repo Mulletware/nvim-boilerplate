@@ -4,8 +4,6 @@
 -- See the kickstart.nvim README for more information
 
 return {
-  require 'plugins/snippets',
-
   {
     'stevearc/conform.nvim',
     config = function()
@@ -104,10 +102,6 @@ return {
       require('fzf-lua').setup {}
     end,
   },
-
-  -- {
-  --   'gu-fan/lastbuf.vim',
-  -- },
 
   {
     'gennaro-tedesco/nvim-possession',
