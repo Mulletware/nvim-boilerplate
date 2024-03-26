@@ -193,4 +193,7 @@ map({ 'n', 'i', 'v' }, "<C-z>", "u", { desc = 'Undo' })
 map({ 'n', 'i', 'v' }, "<C-y>", "<C-r>", { desc = 'Redo' })
 map({ 'n', 'i', 'v' }, "<C-S-z>", "<C-r>", { desc = 'Redo' })
 
+-- Tabs
+map({ 'n', 'i', 'v' }, "<C-S-t>", "<C-o>", { desc = "Open last closed buffer"})
+
 require 'user.keymaps'

@@ -18,6 +18,10 @@ return {
 
   {
     'Exafunction/codeium.vim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'hrsh7th/nvim-cmp',
+    },
     event = 'BufEnter',
   },
 
@@ -62,14 +66,6 @@ return {
     opts = {},
     -- Optional dependencies
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-  },
-
-  {
-    'jose-elias-alvarez/buftabline.nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
-    config = function()
-      require('buftabline').setup {}
-    end,
   },
 
   'Mohammed-Taher/AdvancedNewFile.nvim',
@@ -131,14 +127,6 @@ return {
   },
 
   'theprimeagen/harpoon',
-
-  {
-    'jbyuki/instant.nvim',
-    config = function()
-      vim.g.instant_username = 'dabstractor'
-      vim.g.instant_server_url = 'ws://mulletware:3030'
-    end,
-  },
 
   {
     'folke/noice.nvim',
