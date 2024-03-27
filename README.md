@@ -31,7 +31,6 @@ git checkout main
 
 - [Neovim](https://neovim.io/)
 - [fzf](https://github.com/junegunn/fzf)
-- [code-minimap](https://github.com/wfxr/code-minimap)
 
 
 
@@ -55,6 +54,12 @@ Indent/Unindent: Ctrl+], Ctrl+[
 Open directory by path: ~
 Comment lines: Ctrl+/
 Comment block: gc[pattern]
+Harpoon: <Space>d
+Set Harpoon Mark: <Space>ad
+Git diff: <Space>gd
+Go To Deifnition: gd
+LazyGit: <Space>lg
+Toggle Minimap: Ctrl+m
 
 # Original kickstart.nvim Readme.md:
 # kickstart.nvim

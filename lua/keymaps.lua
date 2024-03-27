@@ -158,6 +158,7 @@ map({ 'n', 'i', 'v' }, '<C-S-K>', '<Plug>(VM-Add-Cursor-Up)', { desc = 'Add curs
 -- map Ctrl+Shift+J to add cursor below
 map({ 'n', 'i', 'v' }, '<C-S-J>', '<Plug>(VM-Add-Cursor-Below)', { desc = 'Add cursor below' })
 
+local ls = require 'luasnip'
 -- Set up mappings for LuaSnip
 vim.keymap.set({ 'i', 's' }, '<Tab>', function()
   if ls.expand_or_jumpable() then
@@ -192,6 +193,6 @@ map({ 'n', 'i', 'v' }, '<C-S-z>', '<C-r>', { desc = 'Redo' })
 -- Tabs
 map({ 'n', 'i', 'v' }, '<C-S-t>', '<C-o>', { desc = 'Open last closed buffer' })
 
--- Minimap
-map({ 'n', 'i', 'v' }, '<C-m>', '<cmd>MinimapToggle<cr>', { desc = 'Toggle Minimap' })
+-- Codewindow
+map({ 'n', 'i', 'v' }, '<C-m>', '<cmd>lua require("codewindow").toggle_minimap()<cr>', { desc = 'Toggle Minimap' })
 require 'user.keymaps'
