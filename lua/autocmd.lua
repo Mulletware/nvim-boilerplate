@@ -9,3 +9,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- automatically convert javascript files to react
+vim.api.nvim_create_augroup('filetype_jsx', { clear = true })
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'javascript',
+  callback = function()
+    vim.bo.filetype = 'javascriptreact'
+  end,
+  group = 'filetype_jsx',
+})
