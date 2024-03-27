@@ -4,17 +4,6 @@
 -- See the kickstart.nvim README for more information
 
 return {
-  {
-    'stevearc/conform.nvim',
-    config = function()
-      require('conform').setup {
-        lsp_fallback = true,
-        formatters_by_ft = {
-          lua = { 'stylua' },
-        },
-      }
-    end,
-  },
 
   {
     'Exafunction/codeium.vim',
