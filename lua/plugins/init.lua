@@ -149,4 +149,6 @@ return {
       vim.g.minimap_auto_start = 1
     end,
   },
+
+  'rhysd/conflict-marker.vim',
 }
