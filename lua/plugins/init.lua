@@ -128,4 +128,10 @@ return {
   },
 
   'folke/zen-mode.nvim',
+
+  {
+    'pmizio/typescript-tools.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+    opts = {},
+  },
 }

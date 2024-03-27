@@ -117,8 +117,23 @@ require('lazy').setup({
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
-
+  {
+    'numToStr/Comment.nvim',
+    dependencies = {
+      { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+    },
+    opts = {
+      pre_hook = function()
+        vim.opt.updatetime = 100
+        return vim.bo.commentstring
+      end,
+    },
+  },
+  -- JSX commenting support
+  {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    opts = { enable_autocmd = true },
+  },
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
   --    require('gitsigns').setup({ ... })
@@ -208,6 +223,8 @@ require('lazy').setup({
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
+      -- local actions = require 'telescope.actions'
+
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
@@ -224,8 +241,18 @@ require('lazy').setup({
           },
           -- monokai-pro.nvim defaults
           defaults = {
-            borderchars = { "█", " ", "▀", "█", "█", " ", " ", "▀" },
-          }
+            borderchars = { '█', ' ', '▀', '█', '█', ' ', ' ', '▀' },
+            -- mappings = {
+            --   n = {
+            --     ['<C-k>'] = actions.move_selection_next,
+            --     ['<C-j>'] = actions.move_selection_previous,
+            --   },
+            --   i = {
+            --     ['<C-k>'] = actions.move_selection_next,
+            --     ['<C-j>'] = actions.move_selection_previous,
+            --   },
+            -- }
+          },
         },
       }
 
@@ -271,12 +298,12 @@ require('lazy').setup({
     end,
   },
   require 'lsp',
-  require 'plugins.conform',
-  require 'plugins.cmp',
-  require 'plugins.theme',
-  require 'plugins.todo-comments',
-  require 'plugins.mini',
-  require 'plugins.treesitter',
+  -- require 'plugins.conform',
+  -- require 'plugins.cmp',
+  -- require 'plugins.theme',
+  -- require 'plugins.todo-comments',
+  -- require 'plugins.mini',
+  -- require 'plugins.treesitter',
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
@@ -293,7 +320,7 @@ require('lazy').setup({
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/plugins/*.lua`
   --    This is the easiest way to modularize your config.
-  -- 
+  --
   --  Uncomment the following line and add your plugins to `lua/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   { import = 'plugins' },
