@@ -1,3 +1,6 @@
+-- Neovide is a lightweight Neovim GUI written in Rust.
+-- Using a GUI instead of a terminal allows for more complete keymapping
+
 local map = require 'utils.map'
 
 if vim.g.neovide then

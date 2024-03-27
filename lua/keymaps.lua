@@ -158,8 +158,6 @@ map({ 'n', 'i', 'v' }, '<C-S-K>', '<Plug>(VM-Add-Cursor-Up)', { desc = 'Add curs
 -- map Ctrl+Shift+J to add cursor below
 map({ 'n', 'i', 'v' }, '<C-S-J>', '<Plug>(VM-Add-Cursor-Below)', { desc = 'Add cursor below' })
 
-local ls = require 'luasnip'
-
 -- Set up mappings for LuaSnip
 vim.keymap.set({ 'i', 's' }, '<Tab>', function()
   if ls.expand_or_jumpable() then
@@ -177,7 +175,6 @@ vim.keymap.set({ 'i', 's' }, '<S-Tab>', function()
   end
 end, { silent = true })
 
-
 -- harpoon keymappings
 map('n', '<Leader>ad', function()
   require('harpoon.mark').add_file()
@@ -187,13 +184,14 @@ map('n', '<Leader>d', function()
   require('harpoon.ui').toggle_quick_menu()
 end, { desc = 'Harpoon Menu' })
 
-
 -- Undo/Redo
-map({ 'n', 'i', 'v' }, "<C-z>", "u", { desc = 'Undo' })
-map({ 'n', 'i', 'v' }, "<C-y>", "<C-r>", { desc = 'Redo' })
-map({ 'n', 'i', 'v' }, "<C-S-z>", "<C-r>", { desc = 'Redo' })
+map({ 'n', 'i', 'v' }, '<C-z>', 'u', { desc = 'Undo' })
+map({ 'n', 'i', 'v' }, '<C-y>', '<C-r>', { desc = 'Redo' })
+map({ 'n', 'i', 'v' }, '<C-S-z>', '<C-r>', { desc = 'Redo' })
 
 -- Tabs
-map({ 'n', 'i', 'v' }, "<C-S-t>", "<C-o>", { desc = "Open last closed buffer"})
+map({ 'n', 'i', 'v' }, '<C-S-t>', '<C-o>', { desc = 'Open last closed buffer' })
 
+-- Minimap
+map({ 'n', 'i', 'v' }, '<C-m>', '<cmd>MinimapToggle<cr>', { desc = 'Toggle Minimap' })
 require 'user.keymaps'
