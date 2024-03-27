@@ -132,14 +132,4 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     opts = {},
   },
-
-  -- {
-  --   'wfxr/minimap.vim',
-  --   setup = function()
-  --     vim.g.minimap_width = 6
-  --     vim.g.minimap_auto_start = 1
-  --   end,
-  -- },
-
-  'rhysd/conflict-marker.vim',
 }
