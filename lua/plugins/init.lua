@@ -99,7 +99,14 @@ return {
     dependencies = { { 'nvim-tree/nvim-web-devicons' } },
   },
 
-  'theprimeagen/harpoon',
+  {
+    'theprimeagen/harpoon',
+    config = function()
+      require('harpoon').setup {
+        tabline = false,
+      }
+    end,
+  },
 
   {
     'folke/noice.nvim',
