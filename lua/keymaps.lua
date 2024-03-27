@@ -179,11 +179,11 @@ end, { silent = true })
 
 
 -- harpoon keymappings
-map('n', '<Leader>d', function()
-  require('harpoon'):list():append()
+map('n', '<Leader>ad', function()
+  require('harpoon.mark').add_file()
 end, { desc = 'Harpoon Add' })
 
-map('n', '<Leader>ad', function()
+map('n', '<Leader>d', function()
   require('harpoon.ui').toggle_quick_menu()
 end, { desc = 'Harpoon Menu' })
 
