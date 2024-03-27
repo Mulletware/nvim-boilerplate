@@ -39,28 +39,28 @@ end, {})
 
 -- Create the VMAddCursorsToVisualSelection function in the global scope
 function Add_cursors_to_visual_selection(start_line, end_line)
-    -- Move the cursor to the start line of the selection
-    vim.fn.cursor({ start_line, 1 })
+  -- Move the cursor to the start line of the selection
+  vim.fn.cursor { start_line, 1 }
 
-    -- Add cursors to each line of the selection
-    for _ = start_line, end_line - 1 do
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(VM-Add-Cursor-Down)", true, false, true), "n")
-    end
+  -- Add cursors to each line of the selection
+  for _ = start_line, end_line - 1 do
+    vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>(VM-Add-Cursor-Down)', true, false, true), 'n')
+  end
 end
 
 -- Make the function accessible to the command
-vim.api.nvim_set_var("Add_cursors_to_visual_selection", Add_cursors_to_visual_selection)
+vim.api.nvim_set_var('Add_cursors_to_visual_selection', Add_cursors_to_visual_selection)
 
 -- Create a custom command that accepts a range
 vim.api.nvim_exec(
-    [[
+  [[
     command! -range VMAddCursorsToVisualSelection lua vim.api.nvim_get_var("Add_cursors_to_visual_selection")(tonumber(vim.fn.line("'<")), tonumber(vim.fn.line("'>")))
     ]],
-    false
+  false
 )
 
 -- Map the custom command to a key combination
-map("v", "<C-S-l>", ":VMAddCursorsToVisualSelection<CR>", { noremap = true, desc = "Add cursor per line selected" })
+map('v', '<C-S-l>', ':VMAddCursorsToVisualSelection<CR>', { noremap = true, desc = 'Add cursor per line selected' })
 
 command('Git', 'LazyGit', {})
 

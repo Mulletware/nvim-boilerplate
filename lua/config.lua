@@ -1,4 +1,4 @@
-require "font"
+require 'font'
 
 -- Set <space> as the leader key
 -- See `:help mapleader`

@@ -1,7 +1,39 @@
 # Mulletware Neovim Configuration
-You can install [Neovim](https://neovim.io/) and clone this repo directly to ~/.config/nvim to get started (`git clone https://github.com/mulletware/nvim-boilerplate --depth=1 ~/.config/nvim`)
+You can install [Neovim](https://neovim.io/) and clone this repo directly to ${XDG_CONFIG_HOME:-$HOME/.config}/nvim to get started (`git clone https://github.com/mulletware/nvim-boilerplate --depth=1 ${XDG_CONFIG_HOME:-$HOME/.config}/.config/nvim`)
 
 For a more complete experience, use [Neovide](https://neovide.dev/) as your terminal emulator.
+
+## Installation:
+
+### For Normal Users Only:
+```sh
+git clone https://github.com/mulletware/nvim-boilerplate --depth=1 ~/.config/nvim
+
+cd ~/.config/nvim
+git remote remove origin
+git remote add origin https://github.com/[your-username]/nvim-config
+```
+
+### For Contributors or Forkers who want future updates:
+```sh
+git clone https://github.com/mulletware/nvim-boilerplate ~/.config/nvim
+cd ~/.config/nvim
+git remote add upstream $(git remote get-url origin) # transfer origin to upstream for boilerplate updates (only needed for boilerplate contributions)
+git remote remove origin
+git remote add origin https://github.com/[your-username]/nvim-config # your new git project
+git push --set-upstream origin main # set upstream branch to track boilerplate
+git checkout -b upstream
+git push --set-upstream upstream main # set main to track your personal project
+git checkout main
+```
+
+## Dependencies:
+
+- [Neovim](https://neovim.io/)
+- [fzf](https://github.com/junegunn/fzf)
+- [code-minimap](https://github.com/wfxr/code-minimap)
+
+
 
 If you want to make changes to this configuration, it is best to fork this project under your own github account, then follow Mulletware's process for [ Managing Forked Projects ]( https://wiki.mulletware.io/en/code/vcs/upstreams/forked ) for incorporating any future updates to the boilerplate into your own version of the config project.
 
