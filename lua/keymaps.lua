@@ -147,7 +147,7 @@ map('n', '<Leader>gd', '<cmd>Gitsigns diffthis<cr>', { desc = 'Git Diff (Normal 
 map('n', '<tab>', '<cmd>bnext<cr>', { desc = 'Switch to next tab' })
 map('n', '<S-tab>', '<cmd>bprevious<cr>', { desc = 'Switch to next tab' })
 
-map('n', '<expr><tab>', '<C-l>', { desc = 'Tab based completion' })
+-- map('n', '<expr><tab>', '<C-l>', { desc = 'Tab based completion' })
 
 -- map Ctrl+Shift+Enter to ZenMode
 map({ 'n', 'i', 'v' }, '<C-S-Enter>', '<cmd>ZenMode<cr>', { desc = 'Zen Mode' })
@@ -157,24 +157,6 @@ map({ 'n', 'i', 'v' }, '<C-S-K>', '<Plug>(VM-Add-Cursor-Up)', { desc = 'Add curs
 
 -- map Ctrl+Shift+J to add cursor below
 map({ 'n', 'i', 'v' }, '<C-S-J>', '<Plug>(VM-Add-Cursor-Below)', { desc = 'Add cursor below' })
-
-local ls = require 'luasnip'
--- Set up mappings for LuaSnip
-vim.keymap.set({ 'i', 's' }, '<Tab>', function()
-  if ls.expand_or_jumpable() then
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '', true)
-  else
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, true, true), 'n', true)
-  end
-end, { silent = true })
-
-vim.keymap.set({ 'i', 's' }, '<S-Tab>', function()
-  if ls.jumpable(-1) then
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '', true)
-  else
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<S-Tab>', true, true, true), 'n', true)
-  end
-end, { silent = true })
 
 -- harpoon keymappings
 map('n', '<Leader>ad', function()
@@ -193,6 +175,7 @@ map({ 'n', 'i', 'v' }, '<C-S-z>', '<C-r>', { desc = 'Redo' })
 -- Tabs
 map({ 'n', 'i', 'v' }, '<C-S-t>', '<C-o>', { desc = 'Open last closed buffer' })
 
--- Codewindow
-map({ 'n', 'i', 'v' }, '<C-m>', '<cmd>lua require("codewindow").toggle_minimap()<cr>', { desc = 'Toggle Minimap' })
+-- Minimap
+map({ 'n', 'i', 'v' }, '<C-m>', MiniMap.toggle, { desc = 'Toggle Minimap' })
+
 require 'user.keymaps'

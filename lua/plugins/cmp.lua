@@ -122,16 +122,12 @@ return { -- Autocompletion
         end),
 
         ['<Tab>'] = cmp.mapping(function(fallback)
-          if luasnip.jumpable(1) then
-            luasnip.jump(1)
-          elseif luasnip.expandable() then
+          if luasnip.expandable() then
             luasnip.expand()
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          elseif vim.api.nvim_get_mode().mode == 'i' then
-            fallback()
+          elseif luasnip.jumpable(1) then
+            luasnip.jump(1)
           else
-            tabout.tabout()
+            fallback()
           end
         end, { 'i', 's' }),
 
