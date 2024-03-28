@@ -64,4 +64,7 @@ map('v', '<C-S-l>', ':VMAddCursorsToVisualSelection<CR>', { noremap = true, desc
 
 command('Git', 'LazyGit', {})
 
--- command("Delete_current_file", ":!rm %", {})
+command('DeleteCurrentFile', function()
+  vim.cmd ':!rip % || rm %'
+  vim.cmd ':bd!'
+end, {})
