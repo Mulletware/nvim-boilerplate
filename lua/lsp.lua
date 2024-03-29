@@ -139,6 +139,7 @@ return { -- LSP Configuration & Plugins
       pyright = {},
       rust_analyzer = {},
       phpactor = {},
+      openscad_lsp = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 
       lua_ls = {

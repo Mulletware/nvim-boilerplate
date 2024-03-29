@@ -18,6 +18,7 @@ return { -- Autoformat
       python = { 'isort', 'black' },
       javascript = { { 'prettierd', 'prettier' } },
       javascriptreact = { { 'prettierd', 'prettier' } },
+      openscad = { 'openscad-lsp' },
     },
   },
 }
