@@ -28,10 +28,23 @@ git checkout main
 ```
 
 ## Dependencies:
-
 - [Neovim](https://neovim.io/)
+- Basic utils: `git`, `make`, `unzip`, C Compiler (`gcc`)
+- [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
+- [Rip](https://github.com/nivekuil/rip)
 - [fzf](https://github.com/junegunn/fzf)
-
+- A [Nerd Font](https://www.nerdfonts.com/): optional, provides various icons
+  - if you have it set `vim.g.have_nerd_font` in `init.lua` to true
+- [LSP](https://microsoft.github.io/language-server-protocol) Servers 
+  - See the 'servers' section of lua/lsp.lua
+  - Consult [LSP Server Configurations](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md) for each language you want to support
+  - You may already have some installed or you may need to install all of them manually
+  - For the preconfigured languages in this project, you will need:
+    - Golang
+    - Python
+    - Rust
+    - C/C++ 
+    - PHP/Composer
 
 
 If you want to make changes to this configuration, it is best to fork this project under your own github account, then follow Mulletware's process for [ Managing Forked Projects ]( https://wiki.mulletware.io/en/code/vcs/upstreams/forked ) for incorporating any future updates to the boilerplate into your own version of the config project.
