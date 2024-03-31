@@ -122,6 +122,9 @@ require('lazy').setup({
     dependencies = {
       { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
     },
+    config = function()
+      require('Comment').setup()
+    end,
   },
   -- JSX commenting support
   'JoosepAlviste/nvim-ts-context-commentstring',
