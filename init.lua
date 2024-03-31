@@ -128,6 +128,9 @@ require('lazy').setup({
         return vim.bo.commentstring
       end,
     },
+    config = function()
+      require('Comment').setup()
+    end,
   },
   -- JSX commenting support
   {
