@@ -1,11 +1,14 @@
 # Mulletware Neovim Configuration
-You can install [Neovim](https://neovim.io/) and clone this repo directly to ${XDG_CONFIG_HOME:-$HOME/.config}/nvim to get started (`git clone https://github.com/mulletware/nvim-boilerplate --depth=1 ${XDG_CONFIG_HOME:-$HOME/.config}/.config/nvim`)
+You can install [Neovim](https://neovim.io/) and clone this repo directly to ${XDG_CONFIG_HOME:-$HOME/.config}/nvim to get started:
+```sh
+git clone https://github.com/mulletware/nvim-boilerplate --depth=1 ${XDG_CONFIG_HOME:-$HOME/.config}/.config/nvim
+```
 
 For a more complete experience, use [Neovide](https://neovide.dev/) as your terminal emulator.
 
 ## Installation:
 
-### For Normal Users Only:
+#### For Normal Users:
 ```sh
 git clone https://github.com/mulletware/nvim-boilerplate --depth=1 ~/.config/nvim
 
@@ -14,7 +17,7 @@ git remote remove origin
 git remote add origin https://github.com/[your-username]/nvim-config
 ```
 
-### For Contributors or Forkers who want future updates:
+#### For Contributors or Forkers who want future updates:
 ```sh
 git clone https://github.com/mulletware/nvim-boilerplate ~/.config/nvim
 cd ~/.config/nvim
@@ -35,7 +38,7 @@ git checkout main
 - [fzf](https://github.com/junegunn/fzf)
 - A [Nerd Font](https://www.nerdfonts.com/): optional, provides various icons
   - if you have it set `vim.g.have_nerd_font` in `init.lua` to true
-- [LSP](https://microsoft.github.io/language-server-protocol) Servers 
+- [LSP](https://microsoft.github.io/language-server-protocol) Servers
   - See the 'servers' section of lua/lsp.lua
   - Consult [LSP Server Configurations](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md) for each language you want to support
   - You may already have some installed or you may need to install all of them manually
@@ -43,36 +46,39 @@ git checkout main
     - Golang
     - Python
     - Rust
-    - C/C++ 
+    - C/C++
     - PHP/Composer
-
 
 If you want to make changes to this configuration, it is best to fork this project under your own github account, then follow Mulletware's process for [ Managing Forked Projects ]( https://wiki.mulletware.io/en/code/vcs/upstreams/forked ) for incorporating any future updates to the boilerplate into your own version of the config project.
 
-
 The important files you may want to edit are located at:
 - ./lua/plugins/init.lua <-- most plugins are listed here, some are in ./init.lua
-- ./lua/keymaps.lua 
-- ./lua/commands.lua 
+- ./lua/keymaps.lua
+- ./lua/commands.lua
 - ./snippets/*.lua -- [language].lua, using [Snipmate](https://github.com/msanders/snipmate.vim) (:h luasnip-lsp-snippets-snipmate-parser)
 
-
 Hotkeys:
-Toggle File Tree: Ctrl+b
-Fuzzy find file: Ctrl+p
-Run Vim command: :, ;, Ctrl+Shift+p
-Run terminal command: !
-Run terminal command, output to buffer: Ctrl+1
-Indent/Unindent: Ctrl+], Ctrl+[
-Open directory by path: ~
-Comment lines: Ctrl+/
-Comment block: gc[pattern]
-Harpoon: <Space>d
-Set Harpoon Mark: <Space>ad
-Git diff: <Space>gd
-Go To Deifnition: gd
-LazyGit: <Space>lg
-Toggle Minimap: Ctrl+m
+- Toggle File Tree: `Ctrl+b`
+- Fuzzy find file: `Ctrl+p`
+- Run Vim command: `:, ;, Ctrl+Shift+p`
+- Run terminal command: `!`
+- Run terminal command, output to buffer: `Ctrl+1`
+- Indent/Unindent: `Ctrl+], Ctrl+[`
+- Open directory by path: `~`
+- Comment lines: `Ctrl+/`
+- Comment block: `gc[pattern]`
+- Harpoon: `<Space>d`
+- Set Harpoon Mark: `<Space>ad`
+- Git diff: `<Space>gd`
+- Go To Deifnition: `gd`
+- LazyGit: `<Space>lg`
+- Toggle Minimap: `Ctrl+m`
+- Rename all occurrences: `<Space>rw`
+- Move lines up/down: `Ctrl + Shift + k/j`
+- Multi-cursor select: `Ctrl + n for first instance, Ctrl + n or just n for others` (Ctrl+d would be preferred if not already a Vim command)
+- Multi-cursor skip: `q when in multi-cursor mode`
+- Cursor per line (visual mode): `Ctrl + Shift + L`
+- Navigate to tabs 1-9: `<Space>1-9`
 
 # Original kickstart.nvim Readme.md:
 # kickstart.nvim
@@ -253,7 +259,7 @@ return {
   * The main purpose of kickstart is to serve as a teaching tool and a reference
     configuration that someone can easily use to `git clone` as a basis for their own.
     As you progress in learning Neovim and Lua, you might consider splitting `init.lua`
-    into smaller parts. A fork of kickstart that does this while maintaining the 
+    into smaller parts. A fork of kickstart that does this while maintaining the
     same functionality is available here:
     * [kickstart-modular.nvim](https://github.com/dam9000/kickstart-modular.nvim)
   * Discussions on this topic can be found here:
