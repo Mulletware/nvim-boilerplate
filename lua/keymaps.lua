@@ -106,15 +106,16 @@ local comment = function()
 end
 
 map('n', '<C-/>', comment, { noremap = true, desc = 'Comment line (Normal mode)' })
--- map("n", "<C-S-?>", comment, { noremap = true, desc = "Comment line (Visual Mode)" })
 map('i', '<C-/>', comment, { noremap = true, desc = 'Comment line (Visual Mode)' })
--- map("i", "<C-S>?", comment, { noremap = true, desc = "Comment line (Visual Mode)" })
-map('v', '<C-/>', '<ESC><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', 'Comment line (Visual Mode)')
-map('v', '<C-S>?', '<ESC><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', 'Comment line (Visual Mode)')
+map('v', '<C-/>', '<ESC><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<cr>gv=gv', 'Comment line (Visual Mode)')
 
--- Map <C-S-/> or <C-S-?> to toggle block comment using Comment.nvim
--- map('v', '<C-Alt-/>', '<C-\\><C-N><Cmd>lua require("Comment.api").toggle.blockwise(vim.fn.visualmode())<CR>', {noremap = true, silent = true})
--- map('v', '<C-S-?>', '<C-\\><C-N><Cmd>lua require("Comment.api").toggle.blockwise(vim.fn.visualmode())<CR>', {noremap = true, silent = true})
+map('v', '<C-A-/>', '<C-\\><C-N><Cmd>lua require("Comment.api").toggle.blockwise(vim.fn.visualmode())<CR>', { noremap = true, silent = true })
+
+map('v', '<C-S>?', function()
+  require('Comment.api').toggle.blockwise(vim.fn.visualmode())
+  vim.cmd 'normal! gv=gv'
+end, 'Comment line (Visual Mode)')
+
 map(
   'v',
   '<C-Alt-/>',
@@ -177,5 +178,14 @@ map({ 'n', 'i', 'v' }, '<C-S-t>', '<C-o>', { desc = 'Open last closed buffer' })
 
 -- Minimap
 map({ 'n', 'i', 'v' }, '<C-m>', MiniMap.toggle, { desc = 'Toggle Minimap' })
+
+-- Move lines up and down
+map({ 'n', 'i' }, '<C-S-j>', ':m +1<cr>', { desc = 'Move line down' })
+map({ 'n', 'i' }, '<C-S-k>', ':m -2<cr>', { desc = 'Move line up' })
+map('v', '<C-S-j>', ":m '>+1<cr>gv=gv", { desc = 'Move line down' })
+map('v', '<C-S-k>', ":m '<-2<cr>gv=gv", { desc = 'Move line up' })
+
+-- Map <leader>rw to replace all instances of current word
+map('n', '<leader>rw', ':%s/\\<<C-r><C-w>\\>//g<left><left>', { noremap = true, silent = true, desc = 'Replace all instances of current word' })
 
 require 'user.keymaps'
