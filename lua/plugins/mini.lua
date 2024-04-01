@@ -44,6 +44,14 @@ return { -- Collection of various small independent plugins/modules
 
     require('mini.trailspace').setup()
 
+    require('mini.starter').setup()
+
+    require('mini.align').setup()
+
+    if not vim.g.neovide then
+      require('mini.animate').setup()
+    end
+
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim
   end,
