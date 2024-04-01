@@ -1,6 +1,7 @@
 --[[ -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 local map = require 'utils.map'
+local switch_to_tab = require('utils.tabs').switch_to_tab
 
 require 'concessions'
 
@@ -21,6 +22,12 @@ map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]ui
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 map('t', '<C-c>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+-- Tab Navigation
+-- <Leader>1-9 will jump to that tab
+for i = 1, 9 do
+  map('n', '<Leader>' .. i, ':lua require("utils.tabs").switch_to_tab(' .. i .. ')<cr>', { desc = 'Go to tab ' .. i })
+end
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
