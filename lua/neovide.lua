@@ -5,6 +5,7 @@ local map = require 'utils.map'
 
 if vim.g.neovide then
   map('v', '<C-c>', '"+y') -- Copy
+  map('v', '<C-S-c>', '"+y') -- Copy
   map('n', '<C-S-v>', '"+P') -- Paste normal mode
   map('i', '<C-S-v>', '"+P') -- Paste normal mode
   map('v', '<C-S-v>', '"+P') -- Paste visual mode
