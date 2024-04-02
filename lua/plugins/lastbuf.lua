@@ -1,0 +1,1 @@
+return { 'Rykka/lastbuf.vim' }

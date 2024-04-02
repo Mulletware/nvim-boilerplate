@@ -74,8 +74,8 @@ map('v', '<C-]>', '>gv', 'Indent (Visual Mode)')
 -- Skip instance
 map({ 'n', 'i', 'v' }, '<C-k>', '<Plug>(VM-Skip-Region)', { noremap = true, silent = true, desc = 'Skip instance (Normal Mode)' })
 
--- map Ctrl+Shift+t to reopen last closed tab with :lua require("harpoon.ui").nav_next()
-map({ 'n', 'i' }, '<C-S-t>', '<cmd>lua require("harpoon.ui").nav_next()<cr>', { desc = 'Reopen last closed tab' })
+-- map Ctrl+Shift+t to reopen last closed tab with LastBuf
+map({ 'n', 'i' }, '<C-S-t>', ':LastBuf', { desc = 'Reopen last closed tab' })
 
 -- map Ctrl + b to Neotree open
 map({ 'n', 'i' }, '<C-b>', '<cmd>NvimTreeToggle<cr>', { desc = 'Toggle Neotree (Normal Mode)' })
@@ -151,6 +151,7 @@ map({ 'n', 'i', 'v' }, '<C-S-K>', '<Plug>(VM-Add-Cursor-Up)', { desc = 'Add curs
 map({ 'n', 'i', 'v' }, '<C-S-J>', '<Plug>(VM-Add-Cursor-Below)', { desc = 'Add cursor below' })
 
 -- harpoon keymappings
+
 map('n', '<Leader>ad', function()
   require('harpoon'):list():append()
 end, { desc = 'Harpoon Add' })
