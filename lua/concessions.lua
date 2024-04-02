@@ -7,11 +7,11 @@
 local map = require 'utils.map'
 
 -- Detach vim's ancient equivalence between <Esc> and <C-[>
-map('i', '<Esc>', '<Esc>', {noremap = true})
-map('n', '<Esc>', '<Esc>', {noremap = true})
-map('v', '<Esc>', '<Esc>', {noremap = true})
-map('c', '<Esc>', '<Esc>', {noremap = true})
-map('i', '<C-[>', '<<', {noremap = true})
-map('n', '<C-[>', '<<', {noremap = true})
-map('v', '<C-[>', '<<', {noremap = true})
-map('c', '<C-[>', '<<', {noremap = true})
+map('i', '<Esc>', '<Esc>', { noremap = true })
+map('n', '<Esc>', '<Esc>', { noremap = true })
+map('v', '<Esc>', '<Esc>', { noremap = true })
+map('c', '<Esc>', '<Esc>', { noremap = true })
+map('i', '<C-[>', '<<', { noremap = true })
+map('n', '<C-[>', '<<', { noremap = true })
+map('v', '<C-[>', '<<', { noremap = true })
+map('c', '<C-[>', '<<', { noremap = true })

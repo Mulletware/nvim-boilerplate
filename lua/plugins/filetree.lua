@@ -1,17 +1,3 @@
--- local on_attach_tree = function(bufnr)
---   local api = require 'nvim-tree.api'
---
---   local function opts(desc)
---     return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
---   end
---
---   api.config.mappings.default_on_attach(bufnr)
---   -- vim.keymap.del({'n', 'i', 'v'}, '<C-n>', { buffer = bufnr })
---   -- vim.keymap.set('n', '<C-b>', api.tree.toggle, opts 'Toggle Explorer')
---   -- vim.keymap.set('n', '<C-b>', api.tree.toggle, opts 'Toggle Explorer')
---   vim.keymap.set('n', '<C-b>', "<cmd>NvimTreeToggle<CR>", opts 'Toggle Explorer')
--- end
-
 local function on_attach_tree(bufnr)
   local api = require 'nvim-tree.api'
 
