@@ -64,21 +64,11 @@ map({ 'n', 'i' }, '<C-q>', '<cmd>qa<cr>', { desc = 'Close Application' })
 
 -- Sublime Text mappings --
 
--- map Ctrl+D to Multi-Cursor
-map('n', '<C-d>', '<Plug>(VM-Find-Under)', { noremap = true, silent = true, desc = 'Start Multi-Cursor (Normal Mode)' })
-map('x', '<C-d>', '<Plug>(VM-Find-Subword-Under)', { noremap = true, silent = true, desc = 'Start Multi-Cursor (Visual Mode)' })
-
 -- map Ctrl + ] and Ctrl + [ to indent/unindent code
 map({ 'n', 'i' }, '<C-]>', '>>', 'Indent')
 map({ 'n', 'i' }, '<C-[>', '<<', 'Indent Backward')
 map('v', '<C-[>', '<gv', 'Indent Backward (Visual Mode)')
 map('v', '<C-]>', '>gv', 'Indent (Visual Mode)')
-
--- Visual mode
-map('v', '<C-d>', '<Plug>(VM-Find-Subword-Under)', { noremap = true, silent = true, desc = 'Start Multi-Cursor (Visual Mode)' })
-
--- Insert mode
-map('i', '<C-d>', '<Plug>(VM-Insert-Cursor-At-EndOfEachLine)', { noremap = true, silent = true, desc = 'Start Multi-Cursor (Insert Mode)' })
 
 -- Skip instance
 map({ 'n', 'i', 'v' }, '<C-k>', '<Plug>(VM-Skip-Region)', { noremap = true, silent = true, desc = 'Skip instance (Normal Mode)' })
