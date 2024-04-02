@@ -122,14 +122,13 @@ require('lazy').setup({
     dependencies = {
       { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
     },
-    opts = {
-      pre_hook = function()
-        vim.opt.updatetime = 100
-        return vim.bo.commentstring
-      end,
-    },
     config = function()
-      require('Comment').setup()
+      require('Comment').setup {
+        pre_hook = function()
+          vim.opt.updatetime = 100
+          return vim.bo.commentstring
+        end,
+      }
     end,
   },
   -- JSX commenting support
