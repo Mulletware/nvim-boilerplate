@@ -69,4 +69,8 @@ command('DeleteCurrentFile', function()
   vim.cmd ':bd!'
 end, {})
 
+command('Request', function()
+  require('telescope').extensions.rest.select_env()
+end, { desc = 'Make an HTTP request' })
+
 require 'user.commands'
