@@ -7,3 +7,5 @@ spell/
 lazy-lock.json
 
 lua/user/*
+
+snippets/
