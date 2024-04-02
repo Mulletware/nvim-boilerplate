@@ -26,7 +26,7 @@ git remote remove origin
 git remote add origin https://github.com/[your-username]/nvim-config # your new git project
 git push --set-upstream origin main # set upstream branch to track boilerplate
 git checkout -b upstream
-git push --set-upstream upstream main # set main to track your personal project
+git config push.default upstream upstream:main
 git checkout main
 ```
 
