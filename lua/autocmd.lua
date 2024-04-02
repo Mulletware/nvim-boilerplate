@@ -18,3 +18,5 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
   group = 'filetype_jsx',
 })
+
+require 'user.autocmd'

@@ -68,3 +68,5 @@ command('DeleteCurrentFile', function()
   vim.cmd ':!rip % || rm %'
   vim.cmd ':bd!'
 end, {})
+
+require 'user.commands'
