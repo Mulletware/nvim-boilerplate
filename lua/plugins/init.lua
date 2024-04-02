@@ -100,15 +100,6 @@ return {
   },
 
   {
-    'theprimeagen/harpoon',
-    config = function()
-      require('harpoon').setup {
-        tabline = false,
-      }
-    end,
-  },
-
-  {
     'folke/noice.nvim',
     event = 'VeryLazy',
     opts = {

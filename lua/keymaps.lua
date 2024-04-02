@@ -1,7 +1,6 @@
 --[[ -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 local map = require 'utils.map'
-local switch_to_tab = require('utils.tabs').switch_to_tab
 
 require 'concessions'
 
@@ -26,7 +25,9 @@ map('t', '<C-c>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 -- Tab Navigation
 -- <Leader>1-9 will jump to that tab
 for i = 1, 9 do
-  map('n', '<Leader>' .. i, ':lua require("utils.tabs").switch_to_tab(' .. i .. ')<cr>', { desc = 'Go to tab ' .. i })
+  map('n', '<Leader>' .. i, function()
+    require('utils.tabs').switch_to_tab(i)
+  end, { desc = 'Go to tab ' .. i })
 end
 
 -- Keybinds to make split navigation easier.
@@ -151,12 +152,8 @@ map({ 'n', 'i', 'v' }, '<C-S-J>', '<Plug>(VM-Add-Cursor-Below)', { desc = 'Add c
 
 -- harpoon keymappings
 map('n', '<Leader>ad', function()
-  require('harpoon.mark').add_file()
+  require('harpoon'):list():append()
 end, { desc = 'Harpoon Add' })
-
-map('n', '<Leader>d', function()
-  require('harpoon.ui').toggle_quick_menu()
-end, { desc = 'Harpoon Menu' })
 
 -- Undo/Redo
 map({ 'n', 'i', 'v' }, '<C-z>', 'u', { desc = 'Undo' })
