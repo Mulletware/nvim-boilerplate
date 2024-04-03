@@ -60,6 +60,9 @@ map({ 'n', 'i' }, '<C-f>', '<cmd>Telescope live_grep<cr>', { desc = 'Find Text i
 map('n', '<C-w>', ':bd<cr>', { desc = 'Close File' })
 map('i', '<C-w>', '<cmd>bd<cr>', { desc = 'Close File' })
 
+-- map Ctrl + t to new buffer
+map({ 'n', 'i' }, '<C-t>', '<cmd>enew<cr>', { desc = 'New Buffer' })
+
 -- map Ctrl + q to quit (press enter to confirm, add ! to force)
 map({ 'n', 'i' }, '<C-q>', '<cmd>qa<cr>', { desc = 'Close Application' })
 
