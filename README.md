@@ -1,14 +1,16 @@
 # Mulletware Neovim Configuration
 You can install [Neovim](https://neovim.io/) and clone this repo directly to ${XDG_CONFIG_HOME:-$HOME/.config}/nvim to get started:
+
 ```sh
 git clone https://github.com/mulletware/nvim-boilerplate --depth=1 ${XDG_CONFIG_HOME:-$HOME/.config}/.config/nvim
 ```
 
 For a more complete experience, use [Neovide](https://neovide.dev/) as your terminal emulator.
 
-## Installation:
+## Installation
 
-#### For Normal Users:
+#### For Normal Users
+
 ```sh
 git clone https://github.com/mulletware/nvim-boilerplate --depth=1 ~/.config/nvim
 
@@ -17,10 +19,11 @@ git remote remove origin
 git remote add origin https://github.com/[your-username]/nvim-config
 ```
 
-#### For Contributors or Forkers who want future updates:
+#### For Contributors or Forkers who want future updates
+
 ```sh
-git clone https://github.com/mulletware/nvim-boilerplate ~/.config/nvim
-cd ~/.config/nvim
+git clone https://github.com/mulletware/nvim-boilerplate ~/${XDG_CONFIG_HOME:-$HOME/.config}/nvim
+cd ~/${XDG_CONFIG_HOME:-$HOME/.config}/nvim
 git remote add upstream $(git remote get-url origin) # transfer origin to upstream for boilerplate updates (only needed for boilerplate contributions)
 git remote remove origin
 git remote add origin https://github.com/[your-username]/nvim-config # your new git project
@@ -30,8 +33,17 @@ git config push.default upstream upstream:main
 git checkout main
 ```
 
-## Dependencies:
-- [Neovim](https://neovim.io/)
+Now clone your snippets repo inside your neovim config project at ~/.config/nvim/snippets
+
+```sh
+  cd ~/${XDG_CONFIG_HOME:-$HOME/.config}/nvim
+  git clone https://github.com/[your-username]/snippets.git
+```
+
+The snippets can be in [Snipmate](https://github.com/garbas/vim-snipmate) or VSCode format.
+
+## Dependencies
+- [Neovim](https://neovim.io/) 0.9.0+
 - Basic utils: `git`, `make`, `unzip`, C Compiler (`gcc`)
 - [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
 - [Rip](https://github.com/nivekuil/rip)
@@ -48,6 +60,12 @@ git checkout main
     - Rust
     - C/C++
     - PHP/Composer
+- Making Requests
+  - [rest.nvim](https://github.com/rest-nvim/rest.nvim) (already installed)
+    - python
+    - curl
+    - jq
+    - tidy
 
 If you want to make changes to this configuration, it is best to fork this project under your own github account, then follow Mulletware's process for [ Managing Forked Projects ]( https://wiki.mulletware.io/en/code/vcs/upstreams/forked ) for incorporating any future updates to the boilerplate into your own version of the config project.
 
@@ -56,6 +74,10 @@ The important files you may want to edit are located at:
 - ./lua/keymaps.lua
 - ./lua/commands.lua
 - ./snippets/*.lua -- [language].lua, using [Snipmate](https://github.com/msanders/snipmate.vim) (:h luasnip-lsp-snippets-snipmate-parser)
+
+## Commands
+- Make [requests](https://github.com/rest-nvim/rest.nvim) with `:Request`
+- Connect to databases with `:DBUI`
 
 Hotkeys:
 - Toggle File Tree: `Ctrl+b`
@@ -67,8 +89,6 @@ Hotkeys:
 - Open directory by path: `~`
 - Comment lines: `Ctrl+/`
 - Comment block: `gc[pattern]`
-- Harpoon: `<Space>d`
-- Set Harpoon Mark: `<Space>ad`
 - Git diff: `<Space>gd`
 - Go To Deifnition: `gd`
 - LazyGit: `<Space>lg`
@@ -79,8 +99,11 @@ Hotkeys:
 - Multi-cursor skip: `q when in multi-cursor mode`
 - Cursor per line (visual mode): `Ctrl + Shift + L`
 - Navigate to tabs 1-9: `<Space>1-9`
+- Set Harpoon Mark: `<Space>ad`
+- Open Harpoon: `<Space>d`
+- Navigate to Harpoon marked tabs: `<Space>d1-9`
 
-# Original kickstart.nvim Readme.md:
+# Original kickstart.nvim Readme.md
 # kickstart.nvim
 
 ## Introduction
