@@ -228,11 +228,21 @@ require('lazy').setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
+        defaults = {
+          mappings = {
+            n = {
+              ['j'] = 'move_selection_next',
+              ['k'] = 'move_selection_previous',
+              ['<C-j>'] = 'move_selection_next',
+              ['<C-k>'] = 'move_selection_previous',
+            },
+            i = {
+              ['<C-j>'] = 'move_selection_next',
+              ['<C-k>'] = 'move_selection_previous',
+              ['<c-enter>'] = 'to_fuzzy_refine',
+            },
+          },
+        },
         -- pickers = {}
         extensions = {
           ['ui-select'] = {
@@ -242,16 +252,7 @@ require('lazy').setup({
           -- monokai-pro.nvim defaults
           defaults = {
             borderchars = { '█', ' ', '▀', '█', '█', ' ', ' ', '▀' },
-            -- mappings = {
-            --   n = {
-            --     ['<C-k>'] = actions.move_selection_next,
-            --     ['<C-j>'] = actions.move_selection_previous,
-            --   },
-            --   i = {
-            --     ['<C-k>'] = actions.move_selection_next,
-            --     ['<C-j>'] = actions.move_selection_previous,
-            --   },
-            -- }
+            -- mappings = ,
           },
         },
       }
