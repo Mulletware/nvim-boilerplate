@@ -59,6 +59,7 @@ map({ 'n', 'i' }, '<C-t>', '<cmd>enew<cr>', { desc = 'New Buffer' })
 
 -- map Ctrl + q to quit (press enter to confirm, add ! to force)
 map({ 'n', 'i' }, '<C-q>', '<cmd>qa<cr>', { desc = 'Close Application' })
+map({ 'n', 'i' }, '<C-S-q>', '<cmd>qa!<cr>', { desc = 'Close Application without saving' })
 
 -- Sublime Text mappings --
 

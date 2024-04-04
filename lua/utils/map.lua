@@ -22,7 +22,7 @@ local map = function(modes, lhs, rhs, opts)
       if mode == 'i' and type(_rhs) == 'string' then
         _rhs = '<Esc>' .. _rhs .. 'i'
       end
-      options.desc = options.desc .. '(' .. mode .. ' mode)'
+      options.desc = options.desc .. ' (' .. mode .. ' mode)'
 
       set(mode, lhs, _rhs, options)
     end
