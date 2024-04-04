@@ -52,6 +52,7 @@ return { -- Collection of various small independent plugins/modules
       require('mini.animate').setup()
     end
 
+    require('mini.indentscope').setup()
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim
   end,
