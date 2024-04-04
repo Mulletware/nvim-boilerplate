@@ -19,4 +19,8 @@ vim.api.nvim_create_autocmd('FileType', {
   group = 'filetype_jsx',
 })
 
+vim.api.nvim_create_user_command('Snippets', function()
+  require('luasnip.loaders').edit_snippet_files()
+end, { nargs = '*' })
+
 require 'user.autocmd'

@@ -100,7 +100,9 @@ return { -- Autocompletion
 
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
-    local tabout = require 'tabout'
+
+    -- tabout is no longer used in this file but I'm leaving it here because I suspect it will be needed as completion bugs emerge
+    -- local tabout = require 'tabout'
 
     cmp.setup {
 
