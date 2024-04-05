@@ -9,7 +9,7 @@ For a more complete experience, use [Neovide](https://neovide.dev/) as your term
 
 ## Installation
 
-#### For Normal Users
+### For Normal Users
 
 ```sh
 git clone https://github.com/mulletware/nvim-boilerplate --depth=1 ~/.config/nvim
@@ -19,7 +19,7 @@ git remote remove origin
 git remote add origin https://github.com/[your-username]/nvim-config
 ```
 
-#### For Contributors or Forkers who want future updates
+### For Contributors or Forkers who want future updates
 
 ```sh
 git clone https://github.com/mulletware/nvim-boilerplate ~/${XDG_CONFIG_HOME:-$HOME/.config}/nvim
@@ -43,6 +43,7 @@ Now clone your snippets repo inside your neovim config project at ~/.config/nvim
 The snippets can be in [Snipmate](https://github.com/garbas/vim-snipmate) or VSCode format.
 
 ## Dependencies
+
 - [Neovim](https://neovim.io/) 0.9.0+
 - Basic utils: `git`, `make`, `unzip`, C Compiler (`gcc`)
 - [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
@@ -70,16 +71,19 @@ The snippets can be in [Snipmate](https://github.com/garbas/vim-snipmate) or VSC
 If you want to make changes to this configuration, it is best to fork this project under your own github account, then follow Mulletware's process for [ Managing Forked Projects ]( https://wiki.mulletware.io/en/code/vcs/upstreams/forked ) for incorporating any future updates to the boilerplate into your own version of the config project.
 
 The important files you may want to edit are located at:
+
 - ./lua/plugins/init.lua <-- most plugins are listed here, some are in ./init.lua
 - ./lua/keymaps.lua
 - ./lua/commands.lua
 - ./snippets/*.lua -- [language].lua, using [Snipmate](https://github.com/msanders/snipmate.vim) (:h luasnip-lsp-snippets-snipmate-parser)
 
 ## Commands
+
 - Make [requests](https://github.com/rest-nvim/rest.nvim) with `:Request`
 - Connect to databases with `:DBUI`
 
 Hotkeys:
+
 - Toggle File Tree: `Ctrl+b`
 - Fuzzy find file: `Ctrl+p`
 - Run Vim command: `:, ;, Ctrl+Shift+p`
@@ -94,25 +98,40 @@ Hotkeys:
 - LazyGit: `<Space>lg`
 - Toggle Minimap: `Ctrl+m`
 - Rename all occurrences: `<Space>rw`
-- Move lines up/down: `Ctrl + Shift + k/j`
-- Multi-cursor select: `Ctrl + n for first instance, Ctrl + n or just n for others` (Ctrl+d would be preferred if not already a Vim command)
+- Move lines up/down: `Ctrl+Shift+k/j`
+- Multi-cursor select: `Ctrl+n for first instance, Ctrl+n or just n for others` (Ctrl+d would be preferred if not already a Vim command)
 - Multi-cursor skip: `q when in multi-cursor mode`
-- Cursor per line (visual mode): `Ctrl + Shift + L`
+- Cursor per line (visual mode): `Ctrl+Shift+L`
 - Navigate to tabs 1-9: `<Space>1-9`
 - Set Harpoon Mark: `<Space>ad`
 - Open Harpoon: `<Space>d`
 - Navigate to Harpoon marked tabs: `<Space>d1-9`
+- Window Panes:
+  - Focus Left: <Ctrl+h>
+  - Focus Right: <Ctrl+l>
+  - Focus Down: <Ctrl+j>
+  - Focus Up: <Ctrl+k>
+  - Open Right <Ctrl+Alt+h>
+  - Open New Right: <Ctrl+Alt+l>
+  - Open Down: <Ctrl+Alt+k>
+  - Open New Down: <Ctrl+Alt+j>
+  - Close: <Ctrl+Alt+w>
+  - Destroy Others: <Ctrl+Alt+o>
+  - Resize Down horizontally: <Ctrl+Shift+Alt-h>
+  - Resize Up horizontally: <Ctrl+Shift+Alt-l>
+  - Resize Down vertically: <Ctrl+Shift+Alt-j>
+  - Resize Up horizontally: <Ctrl+Shift+Alt-k>
 
-# Original kickstart.nvim Readme.md
-# kickstart.nvim
+
+# kickstart.nvim (Original Readme.md)
 
 ## Introduction
 
 A starting point for Neovim that is:
 
-* Small
-* Single-file
-* Completely Documented
+- Small
+- Single-file
+- Completely Documented
 
 **NOT** a Neovim distribution, but instead a starting point for your configuration.
 
@@ -131,6 +150,7 @@ If you are experiencing issues, please make sure you have the latest versions.
 > [Backup](#FAQ) your previous configuration (if any exists)
 
 External Requirements:
+
 - Basic utils: `git`, `make`, `unzip`, C Compiler (`gcc`)
 - [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
 - A [Nerd Font](https://www.nerdfonts.com/): optional, provides various icons

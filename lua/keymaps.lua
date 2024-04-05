@@ -33,10 +33,27 @@ end
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --  See `:help wincmd` for a list of all window commands
-map('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-map('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-map('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-map('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+map('n', '<C-h>', ':winc h<cr>', { desc = 'Move focus to the left pane' })
+map('n', '<C-l>', ':winc l<cr>', { desc = 'Move focus to the right pane' })
+map('n', '<C-j>', ':winc j<cr>', { desc = 'Move focus to the lower pane' })
+map('n', '<C-k>', ':winc k<cr>', { desc = 'Move focus to the upper pane' })
+
+-- Window tiling
+map({ 'n', 'i' }, '<C-A-o>', ':only<cr>', { desc = 'Pane becomes the only one' })
+map({ 'n', 'i' }, '<C-A-w>', ':close<cr>', { desc = 'Pane Close' })
+
+map({ 'n', 'i' }, '<C-A-h>', ':vsplit<cr>', { desc = 'Pane open to the right (current file)' })
+map({ 'n', 'i' }, '<C-A-l>', ':vnew<cr>', { desc = 'Pane open to the right' })
+map({ 'n', 'i' }, '<C-A-j>', ':new<cr>', { desc = 'Pane open below' })
+map({ 'n', 'i' }, '<C-A-k>', ':split<cr>', { desc = 'Pane open below' })
+
+-- Window tile resizing
+map({ 'n', 'i' }, '<C-S-A-h>', ':vertical resize -2<cr>', { desc = 'Resize vertical pane down' })
+map({ 'n', 'i' }, '<C-S-A-j>', ':resize -2<cr>', { desc = 'Resize horizontal pane down' })
+map({ 'n', 'i' }, '<C-S-A-k>', ':resize +2<cr>', { desc = 'Resize horizontal pane up' })
+map({ 'n', 'i' }, '<C-S-A-l>', ':vertical resize +2<cr>', { desc = 'Resize vertical pane up' })
+
+map('n', '<Leader>q', ':close<cr>', { desc = 'Close window' })
 
 -- Custom mappings
 
@@ -51,8 +68,8 @@ map({ 'n', 'i' }, '<C-s>', ':w<CR>', { desc = 'Save File' })
 map({ 'n', 'i' }, '<C-f>', '<cmd>Telescope live_grep<cr>', { desc = 'Find Text in Files (Normal Mode)' })
 
 -- map Ctrl + w to close Buffer/tab
-map('n', '<C-w>', ':bd<cr>', { desc = 'Close File' })
-map('i', '<C-w>', '<cmd>bd<cr>', { desc = 'Close File' })
+map({ 'i', 'n' }, '<C-w>', ':bd<cr>', { desc = 'Close File' })
+map({ 'i', 'n' }, '<C-S-w>', ':bd!<cr>', { desc = 'Close File (forced)' })
 
 -- map Ctrl + t to new buffer
 map({ 'n', 'i' }, '<C-t>', '<cmd>enew<cr>', { desc = 'New Buffer' })
@@ -61,16 +78,11 @@ map({ 'n', 'i' }, '<C-t>', '<cmd>enew<cr>', { desc = 'New Buffer' })
 map({ 'n', 'i' }, '<C-q>', '<cmd>qa<cr>', { desc = 'Close Application' })
 map({ 'n', 'i' }, '<C-S-q>', '<cmd>qa!<cr>', { desc = 'Close Application without saving' })
 
--- Sublime Text mappings --
-
 -- map Ctrl + ] and Ctrl + [ to indent/unindent code
 map({ 'n', 'i' }, '<C-]>', '>>', 'Indent')
 map({ 'n', 'i' }, '<C-[>', '<<', 'Indent Backward')
 map('v', '<C-[>', '<gv', 'Indent Backward (Visual Mode)')
 map('v', '<C-]>', '>gv', 'Indent (Visual Mode)')
-
--- Skip instance
-map({ 'n', 'i', 'v' }, '<C-k>', '<Plug>(VM-Skip-Region)', { noremap = true, silent = true, desc = 'Skip instance (Normal Mode)' })
 
 -- map Ctrl+Shift+t to reopen last closed tab with LastBuf
 map({ 'n', 'i' }, '<C-S-t>', ':LastBuf', { desc = 'Reopen last closed tab' })
@@ -83,7 +95,7 @@ map({ 'n', 'i' }, '<C-p>', '<cmd>Telescope find_files<cr>', { desc = 'Find Files
 -- map("i", "<C-p>", "<cmd>Telescope find_files<cr>", { desc = "Find Files (Normal Mode)" })
 
 -- Ctrl+Shift+P to toggle command menu (":")
-map({ 'n', 'i' }, '<C-S-P>', ':', { desc = 'Command Menu Toggle (Normal Mode)' })
+map({ 'n', 'i' }, '<C-S-p>', ':Telescope buffers<cr>', { desc = 'Fuzzy Find In Open Buffers' })
 
 -- map Ctrl+A to select all
 map({ 'n', 'i' }, '<C-a>', '<cmd>normal ggVG<cr>', { desc = 'Select all (Normal Mode)' })
@@ -172,6 +184,6 @@ map('v', '<C-S-j>', ":m '>+1<cr>gv=gv", { desc = 'Move line down' })
 map('v', '<C-S-k>', ":m '<-2<cr>gv=gv", { desc = 'Move line up' })
 
 -- Map <leader>rw to replace all instances of current word
-map('n', '<leader>rw', ':%s/\\<<C-r><C-w>\\>//g<left><left>', { noremap = true, silent = true, desc = 'Replace all instances of current word' })
+map('n', '<leader>rw', ':%s/\\<<C-r><C-w>\\>//g<left><left>', { noremap = true, desc = 'Replace all instances of current word' })
 
 require 'user.keymaps'
