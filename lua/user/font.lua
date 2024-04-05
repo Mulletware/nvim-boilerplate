@@ -1,3 +1,4 @@
--- add your personal keymaps here to avoid conflicts
+-- add your personal settings here to avoid conflicts
 --   do not check changes to this file into the upstream branch!
--- local map = require '../utils.map'
+
+-- vim.opt.guifont = 'FiraMono Nerd Font Mono:h15:b' -- '<Font Name>:h<size>(:<style flags>)'
