@@ -7,7 +7,6 @@ return {
     local harpoon = require 'harpoon'
     harpoon:setup {}
 
-    -- basic telescope configuration
     local conf = require('telescope.config').values
     local function toggle_telescope(harpoon_files)
       local file_paths = {}
@@ -27,19 +26,17 @@ return {
         :find()
     end
 
-    map('n', '<Leader>d', function()
-      toggle_telescope(harpoon:list())
-    end, { desc = 'Open harpoon window' })
-    -- require('harpoon').setup {
-    --   tabline = false,
-    -- }
-
     for i = 1, 9 do
       local cb = function()
         harpoon:list():select(i)
       end
-      map('n', '<Leader>h' .. i, cb, { desc = 'Harpoon ' .. i })
+
       map('n', '<Leader>d' .. i, cb, { desc = 'Harpoon ' .. i })
+      map('n', '<Leader>h' .. i, cb, { desc = 'Harpoon ' .. i })
     end
+
+    map('n', '<Leader>d', function()
+      toggle_telescope(harpoon:list())
+    end, { desc = 'Open harpoon window' })
   end,
 }
