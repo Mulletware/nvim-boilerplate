@@ -1,3 +1,5 @@
+local has_words_before = require('utils.text').has_words_before
+
 return { -- Autocompletion
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
@@ -101,8 +103,16 @@ return { -- Autocompletion
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
 
-    -- tabout is no longer used in this file but I'm leaving it here because I suspect it will be needed as completion bugs emerge
-    -- local tabout = require 'tabout'
+    local accept = function(fallback)
+      if cmp.visible() and cmp.get_active_entry() then
+        cmp.confirm {
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = true,
+        }
+      else
+        fallback()
+      end
+    end
 
     cmp.setup {
 
@@ -112,22 +122,16 @@ return { -- Autocompletion
         end,
       },
       mapping = {
-        ['<CR>'] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.confirm {
-              behavior = cmp.ConfirmBehavior.Replace,
-              select = true,
-            }
-          else
-            fallback()
-          end
-        end),
+        ['<CR>'] = cmp.mapping(accept),
+        ['<C-l>'] = cmp.mapping(accept),
 
         ['<Tab>'] = cmp.mapping(function(fallback)
           if luasnip.expandable() then
             luasnip.expand()
           elseif luasnip.jumpable(1) then
             luasnip.jump(1)
+          elseif has_words_before() then
+            accept(fallback)
           else
             fallback()
           end
