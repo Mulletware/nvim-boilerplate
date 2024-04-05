@@ -73,4 +73,20 @@ command('Request', function()
   require('telescope').extensions.rest.select_env()
 end, { desc = 'Make an HTTP request' })
 
+command('FormattingDisable', function()
+  vim.g.disable_formatting = true
+end, {
+  desc = 'Disable formatting',
+})
+command('FormattingEnable', function()
+  vim.g.disable_formatting = false
+end, {
+  desc = 'Enable formatting',
+})
+command('FormattingToggle', function()
+  vim.g.disable_formatting = not vim.g.disable_formatting
+end, {
+  desc = 'Toggle formatting',
+})
+
 require 'user.commands'
