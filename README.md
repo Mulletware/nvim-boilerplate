@@ -49,6 +49,7 @@ The snippets can be in [Snipmate](https://github.com/garbas/vim-snipmate) or VSC
 - [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
 - [Rip](https://github.com/nivekuil/rip)
 - [fzf](https://github.com/junegunn/fzf)
+- [sad](https://github.com/ms-jpq/sad)
 - A [Nerd Font](https://www.nerdfonts.com/): optional, provides various icons
   - if you have it set `vim.g.have_nerd_font` in `init.lua` to true
 - [LSP](https://microsoft.github.io/language-server-protocol) Servers
@@ -76,6 +77,8 @@ The important files you may want to edit are located at:
 - ./lua/keymaps.lua
 - ./lua/commands.lua
 - ./snippets/*.lua -- [language].lua, using [Snipmate](https://github.com/msanders/snipmate.vim) (:h luasnip-lsp-snippets-snipmate-parser)
+  - these can be cloned from your own git repo
+- ./lua/user/*.lua
 
 ## Commands
 
@@ -100,12 +103,12 @@ Hotkeys:
 - Rename all occurrences: `<Space>rw`
 - Move lines up/down: `Ctrl+Shift+k/j`
 - Multi-cursor select: `Ctrl+n for first instance, Ctrl+n or just n for others` (Ctrl+d would be preferred if not already a Vim command)
-- Multi-cursor skip: `q when in multi-cursor mode`
+- Multi-cursor skip: `q` when in multi-cursor mode
 - Cursor per line (visual mode): `Ctrl+Shift+L`
 - Navigate to tabs 1-9: `<Space>1-9`
 - Set Harpoon Mark: `<Space>ad`
 - Open Harpoon: `<Space>d`
-- Navigate to Harpoon marked tabs: `<Space>d1-9`
+- Navigate to Harpoon marked tabs: `<Space>d1-9` or `<Space>h1-9`
 - Window Panes:
   - Focus Left: <Ctrl+h>
   - Focus Right: <Ctrl+l>
@@ -122,6 +125,17 @@ Hotkeys:
   - Resize Down vertically: <Ctrl+Shift+Alt-j>
   - Resize Up horizontally: <Ctrl+Shift+Alt-k>
 
+
+## Things you'll want to read about
+
+- [Vim Fugitive](https://github.com/tpope/vim-fugitive)
+- [Lazy Git](https://github.com/kdheepak/lazygit.nvim)
+- [Vim Visual Multi](https://github.com/mg979/vim-visual-multi)
+- [Harpoon](https://github.com/ThePrimeagen/harpoon)
+- Help Entries (:h [topic])
+- [Neovim Docs](https://neovim.io/doc)
+- [Neovide](https://neovide.dev/)
+- [LSP Server Configuration](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md)
 
 # kickstart.nvim (Original Readme.md)
 
