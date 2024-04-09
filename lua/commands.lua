@@ -89,4 +89,12 @@ end, {
   desc = 'Toggle formatting',
 })
 
+command('CopyFilePath', function()
+  vim.fn.setreg('+', vim.fn.expand '%:p')
+end, { desc = 'Copy file path' })
+
+command('CopyRelativeFilePath', function()
+  vim.fn.setreg('+', vim.fn.fnamemodify(vim.fn.expand '%', ':.'))
+end, { desc = 'Copy file path' })
+
 require 'user.commands'
