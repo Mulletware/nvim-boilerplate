@@ -62,8 +62,6 @@ vim.api.nvim_exec(
 -- Map the custom command to a key combination
 map('v', '<C-S-l>', ':VMAddCursorsToVisualSelection<CR>', { noremap = true, desc = 'Add cursor per line selected' })
 
-command('Git', 'LazyGit', {})
-
 command('DeleteCurrentFile', function()
   vim.cmd ':!rip % || rm %'
   vim.cmd ':bd!'
