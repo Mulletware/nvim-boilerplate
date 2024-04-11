@@ -96,5 +96,16 @@ return {
       command = 'node',
       args = { '~/src/vscode-php-debug/out/phpDebug.js' },
     }
+
+    dap.adapters.neovim = function(callback)
+      local server = require('lua_debugger').launch()
+      callback { type = 'server', host = server.host, port = server.port }
+    end
+
+    dap.configurations.lua = {
+      type = 'neovim',
+      request = 'attach',
+      name = 'Attach to running neovim instance',
+    }
   end,
 }

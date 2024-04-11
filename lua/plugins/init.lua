@@ -133,4 +133,6 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     opts = {},
   },
+
+  { 'mfussenegger/nvim-lua-debugger' },
 }
