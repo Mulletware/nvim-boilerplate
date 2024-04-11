@@ -1,7 +1,7 @@
 local map = vim.keymap.set
 
 return {
-  'theprimeagen/harpoon',
+  'dabstractor/harpoon',
   branch = 'harpoon2',
   config = function()
     local harpoon = require 'harpoon'
