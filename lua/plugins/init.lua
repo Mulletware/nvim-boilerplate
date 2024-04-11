@@ -49,8 +49,6 @@ return {
     end,
   },
 
-  'Mohammed-Taher/AdvancedNewFile.nvim',
-
   {
     'ibhagwan/fzf-lua',
     -- optional for icon support
@@ -99,6 +97,12 @@ return {
   },
 
   {
+    'pmizio/typescript-tools.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+    opts = {},
+  },
+
+  {
     'folke/noice.nvim',
     event = 'VeryLazy',
     opts = {
@@ -114,8 +118,6 @@ return {
     },
   },
 
-  { 'folke/neodev.nvim', opts = {} },
-
   {
     'folke/trouble.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -126,13 +128,25 @@ return {
     end,
   },
 
+  'folke/neodev.nvim',
+
   'folke/zen-mode.nvim',
 
-  {
-    'pmizio/typescript-tools.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    opts = {},
-  },
+  'folke/twilight.nvim',
 
-  { 'mfussenegger/nvim-lua-debugger' },
+  'Mohammed-Taher/AdvancedNewFile.nvim',
+
+  'mfussenegger/nvim-lua-debugger',
+
+  'junegunn/fzf.vim',
+
+  'tpope/vim-fugitive',
+
+  'jbyuki/instant.nvim',
+
+  'Rykka/lastbuf.vim',
+
+  'vim-scripts/Rename2',
+
+  'nvim-pack/nvim-spectre',
 }
