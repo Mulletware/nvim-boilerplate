@@ -82,7 +82,14 @@ The important files you may want to edit are located at:
 
 ## Commands
 
-- Make [requests](https://github.com/rest-nvim/rest.nvim) with `:Request`
+- :DeleteCurrentFile (tries to use safe `rip`, falls back to unsafe `rm`)
+- :Rename {newRelativePathFileName}
+- :FormattingDisable
+- :FormattingEnable
+- :FormattingToggle
+- :CopyFilePath
+- :CopyRelativePath
+- :[Request](https://github.com/rest-nvim/rest.nvim)
 - Connect to databases with `:DBUI`
 
 Hotkeys:
@@ -136,6 +143,8 @@ Hotkeys:
 - [Neovim Docs](https://neovim.io/doc)
 - [Neovide](https://neovide.dev/)
 - [LSP Server Configuration](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md)
+
+Run `:checkhealth` for more information about what your system needs
 
 # kickstart.nvim (Original Readme.md)
 
