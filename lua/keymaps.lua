@@ -72,7 +72,7 @@ map('n', '<Leader>q', ':close<cr>', { desc = 'Close window', silent = true })
 
 -- Custom mappings
 
-map('n', ';', ':', { desc = 'CMD enter command mode' })
+map('n', '<Enter>', ':', { desc = 'CMD enter command mode' })
 
 -- Generic Text Editor mappings --
 
@@ -190,7 +190,7 @@ map({ 'n', 'i', 'v' }, '<C-S-z>', '<C-r>', { desc = 'Redo' })
 map({ 'n', 'i', 'v' }, '<C-S-t>', '<C-o>', { desc = 'Open last closed buffer' })
 
 -- Minimap
-map({ 'n', 'i', 'v' }, '<C-m>', MiniMap.toggle, { desc = 'Toggle Minimap' })
+map({ 'n', 'i', 'v' }, '<C-CR>', MiniMap.toggle, { desc = 'Toggle Minimap' })
 
 -- Move lines up and down
 map({ 'n', 'i' }, '<C-S-j>', ':m +1<cr>', { desc = 'Move line down' })
