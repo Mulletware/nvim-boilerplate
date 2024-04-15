@@ -77,4 +77,11 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
+vim.opt.colorcolumn = '80'
+
+-- titlestring
+vim.opt.title = true
+vim.opt.titlestring = vim.fn.expand '%:p:h:t' -- vim.fn.fnamemodify(vim.getcwd(), ':t') -- = vim.fn.expand '%:h:t'
+vim.opt.titleold = ''
+
 require 'user.config'
