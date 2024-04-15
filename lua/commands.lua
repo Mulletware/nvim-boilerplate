@@ -95,4 +95,16 @@ command('CopyRelativeFilePath', function()
   vim.fn.setreg('+', vim.fn.fnamemodify(vim.fn.expand '%', ':.'))
 end, { desc = 'Copy file path' })
 
+command('NewFile', function(ctx)
+  vim.cmd('e %:p:h/' .. ctx.fargs[1])
+  vim.cmd 'w'
+  vim.cmd 'startinsert'
+end, { desc = 'Create new file', nargs = '*' })
+
+command('RenameCurrentFile', function(ctx)
+  local filepath = vim.fn.expand '%:p:h/' .. ctx.fargs[1]
+  vim.cmd(':w ' .. filepath)
+  vim.cmd(':e! ' .. filepath)
+end, { desc = 'Rename current file', nargs = '*' })
+
 require 'user.commands'
