@@ -1,8 +1,12 @@
--- usage: map({"n", "i"}, "jk", "<Esc>", { desc = "Escape insert mode" })
+---@param modes string | string[]
+---@param lhs string | string[]
+---@param rhs string | function
+---@param opts? string | { desc: string?, force: boolean?, noremap: boolean?, silent: boolean?, nowait: boolean? }
+---@return nil
 local map = function(modes, lhs, rhs, opts)
   -- check if modes is a string or array
   -- if the type of opts is a string, make a new object with a description
-  local options = type(opts) == 'string' and { desc = opts } or opts
+  local options = type(opts) == 'string' and { desc = opts } or opts or {}
 
   -- vim.tbl_extend('force', options, opts)
   -- if not options.force then

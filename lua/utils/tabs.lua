@@ -9,6 +9,7 @@
 
 local M = {}
 
+---@return number[]
 M.get_tabs = function()
   local tabs = {}
 
@@ -23,6 +24,8 @@ M.get_tabs = function()
   return tabs
 end
 
+---@param tabIndex number
+---@return number
 M.get_tab_id = function(tabIndex)
   local tabs = M.get_tabs()
   for i, tab in pairs(tabs) do
@@ -32,6 +35,8 @@ M.get_tab_id = function(tabIndex)
   end
 end
 
+---@param tabId number
+---@return number
 M.get_tab_index = function(tabId)
   local tabs = M.get_tabs()
   for i, tab in pairs(tabs) do
@@ -41,6 +46,8 @@ M.get_tab_index = function(tabId)
   end
 end
 
+---@param n number
+---@return number
 M.switch_to_tab = function(n)
   local tabId = M.get_tab_id(n)
   if tabId ~= nil then
