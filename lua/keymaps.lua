@@ -68,11 +68,12 @@ map({ 'n', 'i' }, '<C-S-A-j>', ':resize -2<cr>', { desc = 'Resize horizontal pan
 map({ 'n', 'i' }, '<C-S-A-k>', ':resize +2<cr>', { desc = 'Resize horizontal pane up', silent = true })
 map({ 'n', 'i' }, '<C-S-A-l>', ':vertical resize +2<cr>', { desc = 'Resize vertical pane up', silent = true })
 
-map('n', '<Leader>q', ':close<cr>', { desc = 'Close window', silent = true })
+map('n', '<Leader>w', ':close<cr>', { desc = 'Close window', silent = true })
+-- map('n', '<Leader>q', ':close<cr>', { desc = 'Close window', silent = true })
 
 -- Custom mappings
 
-map('n', '<Enter>', ':', { desc = 'CMD enter command mode' })
+map('n', '<C-CR>', ':', { desc = 'CMD enter command mode' })
 
 -- Generic Text Editor mappings --
 
@@ -90,8 +91,9 @@ map({ 'i', 'n' }, '<C-S-w>', ':bd!<cr>', { desc = 'Close File (forced)', silent 
 map({ 'n', 'i' }, '<C-t>', '<cmd>enew<cr>', { desc = 'New Buffer', silent = true })
 
 -- map Ctrl + q to quit (press enter to confirm, add ! to force)
-map({ 'n', 'i' }, '<C-q>', '<cmd>qa<cr>', { desc = 'Close Application', silent = true })
-map({ 'n', 'i' }, '<C-S-q>', '<cmd>qa!<cr>', { desc = 'Close Application without saving', silent = true })
+-- map({ 'n', 'i' }, '<leader>q', '<cmd>qa', { desc = 'Close Application', silent = true })
+map({ 'n', 'i' }, '<C-S-q>', '<cmd>qa<cr>', { desc = 'Close Application', silent = true })
+map({ 'n', 'i' }, '<C-A-S-q>', '<cmd>qa!<cr>', { desc = 'Close Application without saving', silent = true })
 
 -- map Ctrl + ] and Ctrl + [ to indent/unindent code
 map({ 'n', 'i' }, '<C-]>', '>>', { desc = 'Indent', silent = true })
@@ -164,8 +166,6 @@ map('n', '<Leader>gd', '<cmd>Gitsigns diffthis<cr>', { desc = 'Git Diff (Normal 
 map('n', '<tab>', '<cmd>bnext<cr>', { desc = 'Switch to next tab' })
 map('n', '<S-tab>', '<cmd>bprevious<cr>', { desc = 'Switch to next tab' })
 
--- map('n', '<expr><tab>', '<C-l>', { desc = 'Tab based completion' })
-
 -- map Ctrl+Shift+Enter to ZenMode
 map({ 'n', 'i', 'v' }, '<C-S-Enter>', '<cmd>ZenMode<cr>', { desc = 'Zen Mode' })
 
@@ -177,9 +177,7 @@ map({ 'n', 'i', 'v' }, '<C-S-J>', '<Plug>(VM-Add-Cursor-Below)', { desc = 'Add c
 
 -- harpoon keymappings
 
-map('n', '<Leader>ad', function()
-  require('harpoon'):list():append()
-end, { desc = 'Harpoon Add' })
+map('n', '<Leader>ad', 'lua require("harpoon"):list():add()', { desc = 'Harpoon Add', silent = true })
 
 -- Undo/Redo
 map({ 'n', 'i', 'v' }, '<C-z>', 'u', { desc = 'Undo' })
@@ -190,7 +188,7 @@ map({ 'n', 'i', 'v' }, '<C-S-z>', '<C-r>', { desc = 'Redo' })
 map({ 'n', 'i', 'v' }, '<C-S-t>', '<C-o>', { desc = 'Open last closed buffer' })
 
 -- Minimap
-map({ 'n', 'i', 'v' }, '<C-CR>', MiniMap.toggle, { desc = 'Toggle Minimap' })
+map({ 'n', 'i', 'v' }, '<C-m>', MiniMap.toggle, { desc = 'Toggle Minimap' })
 
 -- Move lines up and down
 map({ 'n', 'i' }, '<C-S-j>', ':m +1<cr>', { desc = 'Move line down' })
