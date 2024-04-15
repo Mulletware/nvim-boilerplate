@@ -149,4 +149,16 @@ return {
   'vim-scripts/Rename2',
 
   'nvim-pack/nvim-spectre',
+
+  'onsails/lspkind.nvim',
+
+  'ThePrimeagen/refactoring.nvim',
+
+  'xiyaowong/nvim-transparent',
+
+  'mbbill/undotree',
+
+  'fabridamicelli/cronex.nvim',
+
+  'smoka7/hop.nvim',
 }

@@ -199,4 +199,7 @@ map('v', '<C-S-k>', ":m '<-2<cr>gv=gv", { desc = 'Move line up' })
 -- Map <leader>rw to replace all instances of current word
 map('n', '<leader>rw', ':%s/\\<<C-r><C-w>\\>//g<left><left>', { noremap = true, desc = 'Replace all instances of current word' })
 
+-- Undo Tree
+map({ 'i', 'n' }, '<C-S-u>', '<cmd>UndotreeToggle<cr>', { desc = 'Toggle Undo Tree' })
+
 require 'user.keymaps'
