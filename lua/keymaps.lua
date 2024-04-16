@@ -169,16 +169,6 @@ map('n', '<S-tab>', '<cmd>bprevious<cr>', { desc = 'Switch to next tab' })
 -- map Ctrl+Shift+Enter to ZenMode
 map({ 'n', 'i', 'v' }, '<C-S-Enter>', '<cmd>ZenMode<cr>', { desc = 'Zen Mode' })
 
--- map Ctrl+Shift+K to add cursor above
-map({ 'n', 'i', 'v' }, '<C-S-K>', '<Plug>(VM-Add-Cursor-Up)', { desc = 'Add cursor above' })
-
--- map Ctrl+Shift+J to add cursor below
-map({ 'n', 'i', 'v' }, '<C-S-J>', '<Plug>(VM-Add-Cursor-Below)', { desc = 'Add cursor below' })
-
--- harpoon keymappings
-
-map('n', '<Leader>ad', 'lua require("harpoon"):list():add()', { desc = 'Harpoon Add', silent = true })
-
 -- Undo/Redo
 map({ 'n', 'i', 'v' }, '<C-z>', 'u', { desc = 'Undo' })
 map({ 'n', 'i', 'v' }, '<C-y>', '<C-r>', { desc = 'Redo' })
@@ -191,10 +181,10 @@ map({ 'n', 'i', 'v' }, '<C-S-t>', '<C-o>', { desc = 'Open last closed buffer' })
 map({ 'n', 'i', 'v' }, '<C-m>', MiniMap.toggle, { desc = 'Toggle Minimap' })
 
 -- Move lines up and down
-map({ 'n', 'i' }, '<C-S-j>', ':m +1<cr>', { desc = 'Move line down' })
-map({ 'n', 'i' }, '<C-S-k>', ':m -2<cr>', { desc = 'Move line up' })
-map('v', '<C-S-j>', ":m '>+1<cr>gv=gv", { desc = 'Move line down' })
-map('v', '<C-S-k>', ":m '<-2<cr>gv=gv", { desc = 'Move line up' })
+map({ 'n', 'i' }, '<C-S-j>', ':m +1<cr>', { desc = 'Move line down', silent = true })
+map({ 'n', 'i' }, '<C-S-k>', ':m -2<cr>', { desc = 'Move line up', silent = true })
+map('v', '<C-S-j>', ":m '>+1<cr>gv=gv", { desc = 'Move line down', silent = true })
+map('v', '<C-S-k>', ":m '<-2<cr>gv=gv", { desc = 'Move line up', silent = true })
 
 -- Map <leader>rw to replace all instances of current word
 map('n', '<leader>rw', ':%s/\\<<C-r><C-w>\\>//g<left><left>', { noremap = true, desc = 'Replace all instances of current word' })

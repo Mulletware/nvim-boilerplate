@@ -35,8 +35,14 @@ return {
       map('n', '<Leader>h' .. i, cb, { desc = 'Harpoon ' .. i })
     end
 
-    map('n', '<Leader>d', function()
+    map('n', '<Leader>ha', ':lua require("harpoon"):list():add()<cr>', { desc = 'Harpoon Add File', silent = true })
+
+    local open_menu = function()
       toggle_telescope(harpoon:list())
-    end, { desc = 'Open harpoon window' })
+    end
+    local open_opts = { desc = 'Open harpoon list' }
+
+    map('n', '<Leader>h', open_menu, open_opts)
+    map('n', '<Leader>hh', open_menu, open_opts)
   end,
 }
