@@ -23,4 +23,26 @@ vim.api.nvim_create_user_command('Snippets', function()
   require('luasnip.loaders').edit_snippet_files()
 end, { nargs = '*' })
 
+vim.api.nvim_create_autocmd('UIEnter', {
+  callback = function()
+    for _, arg in ipairs(vim.v.argv) do
+      if vim.fn.filereadable(arg) == 1 then
+        local dir = vim.fn.fnamemodify(arg, ':h')
+        while dir ~= '/' do
+          local gitDir = dir .. '/.git'
+          if vim.fn.isdirectory(gitDir) == 1 or vim.fn.filereadable(gitDir) == 1 then
+            vim.cmd('cd ' .. dir)
+            return
+          end
+          dir = vim.fn.fnamemodify(dir, ':h')
+        end
+      elseif vim.fn.isdirectory(arg) == 1 then
+        vim.cmd('cd ' .. arg)
+        return
+      end
+    end
+  end,
+  once = true,
+})
+
 require 'user.autocmd'
