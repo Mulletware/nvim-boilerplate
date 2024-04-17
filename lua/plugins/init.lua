@@ -1,8 +1,3 @@
--- You can add your own plugins here or in other files in this directory!plugin
---  I promise not to create any merge conflicts in this directory :)
-
--- See the kickstart.nvim README for more information
-
 return {
   {
     'Exafunction/codeium.vim',
@@ -57,15 +52,6 @@ return {
       -- calling `setup` is optional for customization
       require('fzf-lua').setup {}
     end,
-  },
-
-  {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
-    config = function()
-      require('dashboard').setup {}
-    end,
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
 
   {
