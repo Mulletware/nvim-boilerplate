@@ -108,7 +108,7 @@ map({ 'n', 'i' }, '<C-S-t>', ':LastBuf', { desc = 'Reopen last closed tab', sile
 map({ 'n', 'i' }, '<C-b>', '<cmd>NvimTreeToggle<cr>', { desc = 'Toggle Neotree (Normal Mode)' })
 
 -- map Ctrl+P to telescope find Files
-map({ 'n', 'i' }, '<C-p>', '<cmd>Telescope find_files<cr>', { desc = 'Find Files (Normal Mode)' })
+map({ 'n', 'i', 'v' }, '<C-P>', '<cmd>Telescope find_files<cr>', { desc = 'Find Files (Normal Mode)', noremap = true })
 -- map("i", "<C-p>", "<cmd>Telescope find_files<cr>", { desc = "Find Files (Normal Mode)" })
 
 -- Ctrl+Shift+P to toggle command menu (":")

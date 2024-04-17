@@ -90,7 +90,8 @@ The important files you may want to edit are located at:
 - :CopyFilePath
 - :CopyRelativePath
 - :[Request](https://github.com/rest-nvim/rest.nvim)
-- Connect to databases with `:DBUI`
+- :DBUI Connects to databases
+- :Spectre for multi-file search/replace with visual feedback
 
 Hotkeys:
 
@@ -113,9 +114,9 @@ Hotkeys:
 - Multi-cursor skip: `q` when in multi-cursor mode
 - Cursor per line (visual mode): `Ctrl+Shift+L`
 - Navigate to tabs 1-9: `<Space>1-9`
-- Set Harpoon Mark: `<Space>ad`
-- Open Harpoon: `<Space>d`
-- Navigate to Harpoon marked tabs: `<Space>d1-9` or `<Space>h1-9`
+- Add Harpoon Mark: `<Space>ha`
+- Open Harpoon: `<Space>h`
+- Navigate to Harpoon marked tabs: `<Space>h1-9`
 - Window Panes:
   - Focus Left: <Ctrl+h>
   - Focus Right: <Ctrl+l>
