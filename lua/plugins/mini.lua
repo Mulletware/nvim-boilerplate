@@ -1,5 +1,6 @@
 return { -- Collection of various small independent plugins/modules
   'echasnovski/mini.nvim',
+  lazy = false,
   config = function()
     -- Better Around/Inside textobjects
     --
@@ -22,6 +23,7 @@ return { -- Collection of various small independent plugins/modules
         map.gen_integration.builtin_search(),
         map.gen_integration.gitsigns(),
         map.gen_integration.diagnostic(),
+        map.gen_integration.diff(),
       },
     }
 
@@ -44,8 +46,6 @@ return { -- Collection of various small independent plugins/modules
 
     require('mini.trailspace').setup()
 
-    require('mini.starter').setup()
-
     require('mini.align').setup()
 
     if not vim.g.neovide then
@@ -53,6 +53,7 @@ return { -- Collection of various small independent plugins/modules
     end
 
     require('mini.indentscope').setup()
+
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim
   end,

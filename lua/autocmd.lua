@@ -46,11 +46,18 @@ vim.api.nvim_create_autocmd('UIEnter', {
 })
 
 vim.api.nvim_create_autocmd('BufDelete', {
-  callback = function()
-    local len = require('utils.table').table_len(require('utils.tabs').get_tabs())
-    print(len)
-    if len < 2 then -- no tabs remaining
-      vim.cmd ':Dashboard'
+  callback = function(args)
+    local bufid = args.buf
+    local tabs = require('utils.tabs').get_tabs()
+    local len = require('utils.table').table_len(tabs)
+
+    if len < 3 then
+      for _, tab in ipairs(tabs) do
+        if tab == bufid then
+          vim.cmd ':Dashboard'
+          break
+        end
+      end
     end
   end,
 })
