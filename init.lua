@@ -249,6 +249,9 @@ require('lazy').setup({
             require('telescope.themes').get_dropdown(),
           },
           'rest',
+          sessions_picker = {
+            sessions_dir = (vim.fn.stdpath 'data') .. '/session/', -- same as '/home/user/.local/share/nvim/session'
+          },
           -- monokai-pro.nvim defaults
           defaults = {
             borderchars = { '█', ' ', '▀', '█', '█', ' ', ' ', '▀' },
@@ -260,6 +263,7 @@ require('lazy').setup({
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'sessions_picker')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'

@@ -23,7 +23,29 @@ vim.api.nvim_create_user_command('Snippets', function()
   require('luasnip.loaders').edit_snippet_files()
 end, { nargs = '*' })
 
-vim.api.nvim_create_autocmd('UIEnter', {
+local config_group = vim.api.nvim_create_augroup('UserConfig', {}) -- A global group for all your config autocommands
+vim.api.nvim_create_autocmd({ 'User' }, {
+  pattern = 'SessionLoadPost',
+  group = config_group,
+  callback = function()
+    require('nvim-tree.api').tree.toggle(false, true)
+  end,
+})
+
+-- Auto save session
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+  callback = function()
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      -- Don't save while there's any 'nofile' buffer open.
+      if vim.api.nvim_get_option_value('buftype', { buf = buf }) == 'nofile' then
+        return
+      end
+    end
+    require('session_manager').save_current_session()
+  end,
+})
+
+vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
     for _, arg in ipairs(vim.v.argv) do
       if vim.fn.filereadable(arg) == 1 then
@@ -38,6 +60,14 @@ vim.api.nvim_create_autocmd('UIEnter', {
         end
       elseif vim.fn.isdirectory(arg) == 1 then
         vim.cmd('cd ' .. arg)
+
+        require('session_manager').load_current_dir_session(true)
+
+        vim.schedule(function() -- WE WAIT BECAUSE WE MUST
+          -- without this little trick if you open a directory like `nvim ~/path/to/dir`
+          --   the last files loaded in the session will be lacking highlighting
+          vim.cmd ':e'
+        end)
         return
       end
     end

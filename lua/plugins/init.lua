@@ -112,6 +112,8 @@ return {
 
   'ThePrimeagen/refactoring.nvim',
 
+  'JoseConseco/telescope_sessions_picker.nvim',
+
   'xiyaowong/nvim-transparent',
 
   'mbbill/undotree',
