@@ -121,4 +121,6 @@ return {
   'fabridamicelli/cronex.nvim',
 
   'smoka7/hop.nvim',
+
+  'nvim-telescope/telescope-symbols.nvim',
 }
