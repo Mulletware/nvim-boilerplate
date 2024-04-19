@@ -192,4 +192,6 @@ map('n', '<leader>rw', ':%s/\\<<C-r><C-w>\\>//g<left><left>', { noremap = true, 
 -- Undo Tree
 map({ 'i', 'n' }, '<C-S-u>', '<cmd>UndotreeToggle<cr>', { desc = 'Toggle Undo Tree' })
 
+map('n', '<Esc><Esc><Esc><Esc><Esc><Esc>', ':Dashboard<cr>', { desc = 'Open Dashboard' })
+
 require 'user.keymaps'
