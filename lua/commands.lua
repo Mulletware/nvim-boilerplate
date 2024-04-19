@@ -102,9 +102,12 @@ command('NewFile', function(ctx)
 end, { desc = 'Create new file', nargs = '*' })
 
 command('RenameCurrentFile', function(ctx)
-  local filepath = vim.fn.expand '%:p:h/' .. ctx.fargs[1]
-  vim.cmd(':w ' .. filepath)
-  vim.cmd(':e! ' .. filepath)
+  local currentfile = vim.fn.expand '%:p'
+  local newfile = (vim.fn.expand '%:p:h') .. '/' .. ctx.fargs[1]
+  vim.cmd(':w ' .. newfile)
+  vim.cmd(':e! ' .. newfile)
+  vim.cmd(':call delete("' .. currentfile .. '")')
+  vim.cmd(':bd! ' .. currentfile)
 end, { desc = 'Rename current file', nargs = '*' })
 
 require 'user.commands'
