@@ -112,7 +112,7 @@ map({ 'n', 'i', 'v' }, '<C-P>', '<cmd>Telescope find_files<cr>', { desc = 'Find 
 -- map("i", "<C-p>", "<cmd>Telescope find_files<cr>", { desc = "Find Files (Normal Mode)" })
 
 -- Ctrl+Shift+P to toggle command menu (":")
-map({ 'n', 'i' }, '<C-S-p>', ':Telescope buffers<cr>', { desc = 'Fuzzy Find In Open Buffers' })
+map({ 'n', 'i' }, '<C-S-p>', ':Telescope buffers<cr>', { desc = 'Fuzzy Find In Open Buffers', silent = true })
 
 -- map Ctrl+A to select all
 map({ 'n', 'i' }, '<C-a>', '<cmd>normal ggVG<cr>', { desc = 'Select all (Normal Mode)', silent = true })
