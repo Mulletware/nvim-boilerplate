@@ -1,5 +1,3 @@
-local has_words_before = require('utils.text').has_words_before
-
 return { -- Autocompletion
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
@@ -130,7 +128,7 @@ return { -- Autocompletion
             luasnip.expand()
           elseif luasnip.jumpable(1) then
             luasnip.jump(1)
-          elseif has_words_before() then
+          elseif require('utils.text').has_words_before() then
             accept(fallback)
           else
             fallback()
@@ -162,9 +160,18 @@ return { -- Autocompletion
         end, { 'i', 's' }),
 
         ['<Esc>'] = cmp.mapping(function(fallback)
+          local tookAction = false
+
           if cmp.visible() then
             cmp.abort()
-          else
+            tookAction = true
+          end
+
+          if luasnip.expand_or_jumpable() then
+            luasnip.unlink_current()
+          end
+
+          if not tookAction then
             fallback()
           end
         end, { 'i', 's' }),
