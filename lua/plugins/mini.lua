@@ -50,10 +50,6 @@ return { -- Collection of various small independent plugins/modules
 
     require('mini.align').setup()
 
-    if not vim.g.neovide then
-      require('mini.animate').setup()
-    end
-
     require('mini.indentscope').setup()
 
     -- ... and there is more!
