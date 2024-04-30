@@ -23,6 +23,7 @@ vim.api.nvim_create_user_command('Snippets', function()
   require('luasnip.loaders').edit_snippet_files()
 end, { nargs = '*' })
 
+-- update nvim-tree syntax on load
 local config_group = vim.api.nvim_create_augroup('UserConfig', {}) -- A global group for all your config autocommands
 vim.api.nvim_create_autocmd({ 'User' }, {
   pattern = 'SessionLoadPost',
@@ -45,19 +46,28 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   end,
 })
 
+-- handle directory or file args
 vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
     for _, arg in ipairs(vim.v.argv) do
       if vim.fn.filereadable(arg) == 1 then
         local dir = vim.fn.fnamemodify(arg, ':h')
+        if dir ~= arg then
+          return
+        end
+
         while dir ~= '/' do
           local gitDir = dir .. '/.git'
+          -- also check if a .git FILE exists for managed repos (`gitdir: ...`)
           if vim.fn.isdirectory(gitDir) == 1 or vim.fn.filereadable(gitDir) == 1 then
             vim.cmd('cd ' .. dir)
             return
           end
+
           dir = vim.fn.fnamemodify(dir, ':h')
         end
+
+        vim.cmd('e ' .. arg)
       elseif vim.fn.isdirectory(arg) == 1 then
         vim.cmd('cd ' .. arg)
 
@@ -79,11 +89,12 @@ vim.api.nvim_create_autocmd('BufDelete', {
   callback = function(args)
     local bufid = args.buf
     local tabs = require('utils.tabs').get_tabs()
-    local len = require('utils.table').table_len(tabs)
+    local tabCount = require('utils.table').table_len(tabs)
 
-    if len < 3 then
+    if tabCount < 3 then
       for _, tab in ipairs(tabs) do
         if tab == bufid then
+          print(vim.inspect(tabs))
           vim.cmd ':Dashboard'
           break
         end
