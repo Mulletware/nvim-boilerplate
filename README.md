@@ -16,8 +16,7 @@ git clone https://github.com/mulletware/nvim-boilerplate --depth=1 ~/.config/nvi
 
 cd ~/.config/nvim
 git remote remove origin
-git remote add origin https://github.com/[your-username]/nvim-config
-```
+git remote add origin https://github.com/[your-username]/nvim-config ```
 
 ### For Contributors or Forkers who want future updates
 
@@ -92,6 +91,11 @@ The important files you may want to edit are located at:
 - :[Request](https://github.com/rest-nvim/rest.nvim)
 - :DBUI Connects to databases
 - :Spectre for multi-file search/replace with visual feedback
+- Git plugins
+  - :Neogit
+  - :LazyGit
+  - :Git (Vim Fugitive)
+  - :Gitsigns
 
 Hotkeys:
 
@@ -107,6 +111,7 @@ Hotkeys:
 - Git diff: `<Space>gd`
 - Go To Deifnition: `gd`
 - LazyGit: `<Space>lg`
+- Neogit: `<Space>gg`
 - Toggle Minimap: `Ctrl+m`
 - Rename all occurrences: `<Space>rw`
 - Move lines up/down: `Ctrl+Shift+k/j`

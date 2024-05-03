@@ -79,6 +79,7 @@ map('n', '<C-CR>', ':', { desc = 'CMD enter command mode' })
 
 -- map Ctrl + s to Save
 map({ 'n', 'i' }, '<C-s>', ':w<CR>', { desc = 'Save File', silent = true })
+map('n', '<Leader>s', ':w<CR>', { desc = 'Save File', silent = true })
 
 -- map Ctrl+F to telescope live_grep
 map({ 'n', 'i' }, '<C-f>', '<cmd>Telescope live_grep<cr>', { desc = 'Find Text in Files (Normal Mode)' })
@@ -161,6 +162,7 @@ map('n', '<Leader>lg', '<cmd>LazyGit<cr>', { desc = 'LazyGit' })
 
 -- map Space + gd to Gitsigns diffthis
 map('n', '<Leader>gd', '<cmd>Gitsigns diffthis<cr>', { desc = 'Git Diff (Normal Mode)' })
+map('n', '<Leader>gg', '<cmd>Neogit<cr>', { desc = 'Neogit' })
 
 -- map <Tab> to next tab
 map('n', '<tab>', '<cmd>bnext<cr>', { desc = 'Switch to next tab' })
