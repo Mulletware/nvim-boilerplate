@@ -86,6 +86,8 @@ return {
     end,
   },
 
+  'folke/flash.nvim',
+
   'folke/neodev.nvim',
 
   'folke/zen-mode.nvim',
@@ -123,4 +125,8 @@ return {
   'smoka7/hop.nvim',
 
   'nvim-telescope/telescope-symbols.nvim',
+
+  'stevearc/dressing.nvim',
+
+  'ton/vim-bufsurf',
 }

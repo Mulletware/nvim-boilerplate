@@ -68,7 +68,11 @@ map({ 'n', 'i' }, '<C-S-A-j>', ':resize -2<cr>', { desc = 'Resize horizontal pan
 map({ 'n', 'i' }, '<C-S-A-k>', ':resize +2<cr>', { desc = 'Resize horizontal pane up', silent = true })
 map({ 'n', 'i' }, '<C-S-A-l>', ':vertical resize +2<cr>', { desc = 'Resize vertical pane up', silent = true })
 
-map('n', '<Leader>w', ':close<cr>', { desc = 'Close window', silent = true })
+local closeTab = function()
+  require('mini.bufremove').unshow()
+end
+
+map('n', '<Leader>w', closeTab, { desc = 'Close window', silent = true })
 -- map('n', '<Leader>q', ':close<cr>', { desc = 'Close window', silent = true })
 
 -- Custom mappings
@@ -85,7 +89,7 @@ map('n', '<Leader>s', ':w<CR>', { desc = 'Save File', silent = true })
 map({ 'n', 'i' }, '<C-f>', '<cmd>Telescope live_grep<cr>', { desc = 'Find Text in Files (Normal Mode)' })
 
 -- map Ctrl + w to close Buffer/tab
-map({ 'i', 'n' }, '<C-w>', ':bd<cr>', { desc = 'Close File', silent = true })
+map({ 'i', 'n' }, '<C-w>', closeTab, { desc = 'Close File', silent = true })
 map({ 'i', 'n' }, '<C-S-w>', ':bd!<cr>', { desc = 'Close File (forced)', silent = true })
 
 -- map Ctrl + t to new buffer
@@ -197,5 +201,10 @@ map({ 'i', 'n' }, '<C-S-u>', '<cmd>UndotreeToggle<cr>', { desc = 'Toggle Undo Tr
 map('n', '<Esc><Esc><Esc><Esc><Esc><Esc><Esc>', ':Dashboard<cr>', { desc = 'Open Dashboard' })
 
 map({ 'n', 'i', 'v' }, '<C-A-S-U>', '<cmd>UndotreeToggle<cr>', { desc = 'Toggle Undo Tree', silent = true })
+
+-- BufSurf
+
+map({ 'n', 'i', 'v' }, '<A-l>', '<cmd>BufSurfForward<cr>', { noremap = true, silent = true })
+map({ 'n', 'i', 'v' }, '<A-h>', '<cmd>BufSurfBack<cr>', { noremap = true, silent = true })
 
 require 'user.keymaps'
