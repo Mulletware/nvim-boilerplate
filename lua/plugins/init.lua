@@ -129,4 +129,6 @@ return {
   'stevearc/dressing.nvim',
 
   'ton/vim-bufsurf',
+
+  'subnut/nvim-ghost.nvim',
 }
