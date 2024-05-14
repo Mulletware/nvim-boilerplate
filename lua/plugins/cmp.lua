@@ -113,7 +113,6 @@ return { -- Autocompletion
     end
 
     cmp.setup {
-
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
@@ -187,5 +186,11 @@ return { -- Autocompletion
         { name = 'dotenv' },
       },
     }
+    cmp.setup.filetype({ 'sql' }, {
+      sources = {
+        { name = 'vim-dadbod-completion' },
+        { name = 'buffer' },
+      },
+    })
   end,
 }

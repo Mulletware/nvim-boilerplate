@@ -72,7 +72,7 @@ local closeTab = function()
   require('mini.bufremove').unshow()
 end
 
-map('n', '<Leader>w', closeTab, { desc = 'Close window', silent = true })
+-- map('n', '<Leader>w', closeTab, { desc = 'Close window', silent = true })
 -- map('n', '<Leader>q', ':close<cr>', { desc = 'Close window', silent = true })
 
 -- Custom mappings
