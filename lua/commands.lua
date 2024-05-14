@@ -110,4 +110,8 @@ command('RenameCurrentFile', function(ctx)
   vim.cmd(':bd! ' .. currentfile)
 end, { desc = 'Rename current file', nargs = '*' })
 
+command('Diff', function()
+  vim.cmd 'DiffviewOpen'
+end, { desc = 'Open diff view' })
+
 require 'user.commands'
