@@ -21,21 +21,9 @@ map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]ui
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 
--- map('t', '<C-c>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-map('v', '<C-S-C>', '"*y', { noremap = true, silent = true })
+map('t', '<C-c>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- System clipboard copy/paste
--- map({ 'n', 'v' }, '<C-S-C>', function()
---   vim.fn.setreg('*', vim.fn.getreg '"')
--- end, { noremap = true, silent = true })
-
--- map({ 'n', 'v' }, '<C-S-C>', function()
---   vim.api.nvim_command 'let @+=@"'
--- end, { noremap = true, silent = true })
-
--- Use <C-S-V> to paste from system clipboard
-map('n', '<C-S-V>', '"+p', { noremap = true })
-map('i', '<C-S-V>', '<C-r>+', { noremap = true })
+map({ 'n', 'v' }, '<C-c>', '"+', { desc = 'Activate system clipboard', silent = true, noremap = true })
 
 -- Tab Navigation
 -- <Leader>1-9 will jump to that tab
@@ -184,7 +172,7 @@ map({ 'n', 'i', 'v' }, '<C-S-z>', '<C-r>', { desc = 'Redo' })
 map({ 'n', 'i', 'v' }, '<C-S-t>', '<C-o>', { desc = 'Open last closed buffer' })
 
 -- Minimap
-map({ 'n', 'i', 'v' }, '<C-m>', MiniMap.toggle, { desc = 'Toggle Minimap' })
+map({ 'n', 'i', 'v' }, '<Leader>m', ":lua require('mini.map').toggle()<cr>", { desc = 'Toggle Minimap', silent = true })
 
 -- Move lines up and down
 map({ 'n', 'i' }, '<C-S-j>', ':m +1<cr>', { desc = 'Move line down', silent = true })
