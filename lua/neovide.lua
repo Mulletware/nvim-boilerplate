@@ -4,7 +4,8 @@
 local map = require 'utils.map'
 
 if vim.g.neovide then
-  map('n', '<F11>', ':let g:neovide_fullscreen = !g:neovide_fullscreen<CR>', { desc = 'Toggle Fullscreen', silent = true })
+  map('v', '<C-S-C>', '"+y', { desc = 'Copy', silent = true }) -- Copy
+  map({ 'n', 'i', 'v' }, '<C-S-V>', '"+P', { desc = 'Paste', silent = true }) -- Paste normal mode
 
   local scaling_factor = 1.03
   local reverse_scaling_factor = 1 / scaling_factor
