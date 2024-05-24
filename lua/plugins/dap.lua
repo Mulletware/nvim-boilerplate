@@ -1,4 +1,5 @@
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
+local map = require 'utils.map'
 --
 return {
   '/mfussenegger/nvim-dap',
@@ -182,6 +183,15 @@ return {
       args = { os.getenv 'HOME' .. '/src/vscode-php-debug/out/phpDebug.js' },
     }
 
+    dap.configurations.php = {
+      {
+        type = 'php',
+        request = 'launch',
+        name = 'Listen for Xdebug',
+        port = 9003,
+      },
+    }
+
     dap.adapters.neovim = function(callback)
       local server = require('lua_debugger').launch()
       callback { type = 'server', host = server.host, port = server.port }
@@ -192,5 +202,21 @@ return {
       request = 'attach',
       name = 'Attach to running neovim instance',
     }
+
+    map('n', '<Leader>bc', function()
+      require('dap').continue()
+    end, { desc = 'Breakpoint Continue' })
+    map('n', '<Leader>bs', function()
+      require('dap').step_over()
+    end, { desc = 'Breakpoint Step Over' })
+    map('n', '<Leader>bi', function()
+      require('dap').step_into()
+    end, { desc = 'Breakpoint Step Into' })
+    map('n', '<Leader>bo', function()
+      require('dap').step_out()
+    end, { desc = 'Breakpoint Step Out' })
+    map('n', '<Leader>bb', function()
+      require('dap').toggle_breakpoint()
+    end, { desc = 'Breakpoint Toggle' })
   end,
 }
