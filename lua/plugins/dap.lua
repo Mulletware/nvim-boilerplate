@@ -179,8 +179,7 @@ return {
     -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#PHP
     dap.adapters.php = {
       type = 'executable',
-      command = 'node',
-      args = { os.getenv 'HOME' .. '/src/vscode-php-debug/out/phpDebug.js' },
+      command = 'php-debug-adapter',
     }
 
     dap.configurations.php = {
@@ -188,6 +187,9 @@ return {
         type = 'php',
         request = 'launch',
         name = 'Listen for Xdebug',
+        pathMappings = {
+          ['/var/www/html/src/api'] = vim.fn.getcwd() .. '/src/api',
+        },
         port = 9003,
       },
     }
