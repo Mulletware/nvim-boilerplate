@@ -88,13 +88,13 @@ vim.api.nvim_create_autocmd('VimEnter', {
 vim.api.nvim_create_autocmd('BufDelete', {
   callback = function(args)
     local bufid = args.buf
-    local tabs = require('utils.tabs').get_tabs()
-    local tabCount = require('utils.table').table_len(tabs)
+    local buffers = require('utils.buffers').get_buffers()
+    local bufferCount = require('utils.table').table_len(buffers)
 
-    if tabCount < 3 then
-      for _, tab in ipairs(tabs) do
-        if tab == bufid then
-          print(vim.inspect(tabs))
+    if bufferCount < 3 then
+      for _, buffer in ipairs(buffers) do
+        if buffer == bufid then
+          print(vim.inspect(buffers))
           vim.cmd ':Dashboard'
           break
         end

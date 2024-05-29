@@ -23,14 +23,14 @@ map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]ui
 
 map('t', '<C-c>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
-map({ 'n', 'v' }, '<C-c>', '"+', { desc = 'Activate system clipboard', silent = true, noremap = true })
+map({ 'n', 'v', 'i' }, '<C-c>', '"+', { desc = 'Activate system clipboard', silent = true, noremap = true })
 
--- Tab Navigation
+-- Buffer Navigation
 -- <Leader>1-9 will jump to that tab
 for i = 1, 9 do
   map('n', '<Leader>' .. i, function()
     require('utils.tabs').switch_to_tab(i)
-  end, { desc = 'Go to tab ' .. i })
+  end, { desc = 'Go to buffer ' .. i })
 end
 
 -- Keybinds to make split navigation easier.
@@ -70,23 +70,29 @@ map('n', '<C-CR>', ':', { desc = 'CMD enter command mode' })
 -- Generic Text Editor mappings --
 
 -- map Ctrl + s to Save
-map({ 'n', 'i' }, '<C-s>', ':w<CR>', { desc = 'Save File', silent = true })
+map({ 'n', 'i' }, '<C-s>', ':w<CR>', { desc = 'Save File', silent = true, noremap = true })
 map('n', '<Leader>s', ':w<CR>', { desc = 'Save File', silent = true })
 
 -- map Ctrl+F to telescope live_grep
 map({ 'n', 'i' }, '<C-f>', '<cmd>Telescope live_grep<cr>', { desc = 'Find Text in Files (Normal Mode)' })
 
 -- map Ctrl + w to close Buffer/tab
-map({ 'i', 'n' }, '<C-w>', closeTab, { desc = 'Close File', silent = true })
-map({ 'i', 'n' }, '<C-S-w>', ':bd!<cr>', { desc = 'Close File (forced)', silent = true })
+-- map({ 'i', 'n' }, '<C-w>', closeTab, { desc = 'Close File', silent = true })
+-- map({ 'i', 'n' }, '<C-S-w>', ':bd!<cr>', { desc = 'Close File (forced)', silent = true })
+map({ 'i', 'n', 'v' }, '<C-A-q>', closeTab, { desc = 'Pane Close', silent = true })
+map({ 'i', 'n', 'v' }, '<C-q>', ':bd<cr>', { desc = 'Close File', silent = true })
+map({ 'i', 'n', 'v' }, '<C-q><C-q>', ':bd!<cr>', { desc = 'Close File', silent = true })
+map({ 'i', 'n', 'v' }, '<C-q><C-q><C-q>', ':q<cr>', { desc = 'Close File', silent = true })
+map({ 'i', 'n', 'v' }, '<C-q><C-q><C-q><C-q>', ':q!<cr>', { desc = 'Close File', silent = true })
+map({ 'i', 'n', 'v' }, '<C-q><C-q><C-q><C-q>', ':q!<cr>', { desc = 'Close File', silent = true })
 
 -- map Ctrl + t to new buffer
 map({ 'n', 'i' }, '<C-t>', '<cmd>enew<cr>', { desc = 'New Buffer', silent = true })
 
 -- map Ctrl + q to quit (press enter to confirm, add ! to force)
 -- map({ 'n', 'i' }, '<leader>q', '<cmd>qa', { desc = 'Close Application', silent = true })
-map({ 'n', 'i' }, '<C-S-q>', '<cmd>qa<cr>', { desc = 'Close Application', silent = true })
-map({ 'n', 'i' }, '<C-A-S-q>', '<cmd>qa!<cr>', { desc = 'Close Application without saving', silent = true })
+-- map({ 'n', 'i' }, '<C-S-q>', '<cmd>qa<cr>', { desc = 'Close Application', silent = true })
+-- map({ 'n', 'i' }, '<C-A-S-q>', '<cmd>qa!<cr>', { desc = 'Close Application without saving', silent = true })
 
 -- map Ctrl + ] and Ctrl + [ to indent/unindent code
 map({ 'n', 'i' }, '<C-]>', '>>', { desc = 'Indent', silent = true })
@@ -160,6 +166,9 @@ map('n', '<Leader>gg', '<cmd>Neogit<cr>', { desc = 'Neogit' })
 map('n', '<tab>', '<cmd>bnext<cr>', { desc = 'Switch to next tab' })
 map('n', '<S-tab>', '<cmd>bprevious<cr>', { desc = 'Switch to next tab' })
 
+map('n', '<leader>l', '<cmd>bnext<cr>', { desc = 'Switch to next tab' })
+map('n', '<leader>h', '<cmd>bprevious<cr>', { desc = 'Switch to next tab' })
+
 -- map Ctrl+Shift+Enter to ZenMode
 map({ 'n', 'i', 'v' }, '<C-S-Enter>', '<cmd>ZenMode<cr>', { desc = 'Zen Mode' })
 
@@ -172,7 +181,7 @@ map({ 'n', 'i', 'v' }, '<C-S-z>', '<C-r>', { desc = 'Redo' })
 map({ 'n', 'i', 'v' }, '<C-S-t>', '<C-o>', { desc = 'Open last closed buffer' })
 
 -- Minimap
-map({ 'n', 'i', 'v' }, '<Leader>m', ":lua require('mini.map').toggle()<cr>", { desc = 'Toggle Minimap', silent = true })
+map({ 'n', 'v' }, '<Leader>m', ":lua require('mini.map').toggle()<cr>", { desc = 'Toggle Minimap', silent = true })
 
 -- Move lines up and down
 map({ 'n', 'i' }, '<C-S-j>', ':m +1<cr>', { desc = 'Move line down', silent = true })
@@ -194,5 +203,20 @@ map({ 'n', 'i', 'v' }, '<C-A-S-U>', '<cmd>UndotreeToggle<cr>', { desc = 'Toggle 
 
 map({ 'n', 'i', 'v' }, '<A-l>', '<cmd>BufSurfForward<cr>', { noremap = true, silent = true })
 map({ 'n', 'i', 'v' }, '<A-h>', '<cmd>BufSurfBack<cr>', { noremap = true, silent = true })
+
+-- Tabs
+
+map({ 'n', 'v' }, '<leader>n', ':enew<cr>', { desc = 'Blank new file', silent = true, noremap = true })
+map({ 'n', 'v' }, '<leader>tt', ':tab split<cr>', { desc = 'Blank new file', silent = true, noremap = true })
+map({ 'n', 'v' }, '<leader>tc', ':tabclose<cr>', { desc = 'Blank new file', silent = true, noremap = true })
+map({ 'n', 'v' }, '<leader>tn', ':tabNext<cr>', { desc = 'Next tab', silent = true, noremap = true })
+map({ 'n', 'v' }, '<leader>tl', ':tabNext<cr>', { desc = 'Next tab', silent = true, noremap = true })
+map({ 'n', 'v' }, '<leader>tp', ':tabprevious<cr>', { desc = 'Previous tab', silent = true, noremap = true })
+map({ 'n', 'v' }, '<leader>th', ':tabprevious<cr>', { desc = 'Previous tab', silent = true, noremap = true })
+map({ 'n', 'v' }, '<leader><Tab>', ':tabNext<cr>', { desc = 'Next tab', silent = true, noremap = true })
+map({ 'n', 'v' }, '<leader><S-Tab>', ':tabprevious<cr>', { desc = 'Previous tab', silent = true, noremap = true })
+
+-- Rest
+map({ 'n', 'v' }, '<leader>rr', ':Rest run<cr>', { desc = 'Rest Run', silent = true, noremap = true })
 
 require 'user.keymaps'
