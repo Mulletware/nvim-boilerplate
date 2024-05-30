@@ -207,11 +207,9 @@ map({ 'n', 'i', 'v' }, '<A-h>', '<cmd>BufSurfBack<cr>', { noremap = true, silent
 -- Tabs
 
 map({ 'n', 'v' }, '<leader>n', ':enew<cr>', { desc = 'Blank new file', silent = true, noremap = true })
-map({ 'n', 'v' }, '<leader>tt', ':tab split<cr>', { desc = 'Blank new file', silent = true, noremap = true })
-map({ 'n', 'v' }, '<leader>tc', ':tabclose<cr>', { desc = 'Blank new file', silent = true, noremap = true })
-map({ 'n', 'v' }, '<leader>tn', ':tabNext<cr>', { desc = 'Next tab', silent = true, noremap = true })
+map({ 'n', 'v' }, '<leader>tt', ':tab split<cr>', { desc = 'New Tab', silent = true, noremap = true })
+map({ 'n', 'v' }, '<leader>tc', ':tabclose<cr>', { desc = 'New Tab', silent = true, noremap = true })
 map({ 'n', 'v' }, '<leader>tl', ':tabNext<cr>', { desc = 'Next tab', silent = true, noremap = true })
-map({ 'n', 'v' }, '<leader>tp', ':tabprevious<cr>', { desc = 'Previous tab', silent = true, noremap = true })
 map({ 'n', 'v' }, '<leader>th', ':tabprevious<cr>', { desc = 'Previous tab', silent = true, noremap = true })
 map({ 'n', 'v' }, '<leader><Tab>', ':tabNext<cr>', { desc = 'Next tab', silent = true, noremap = true })
 map({ 'n', 'v' }, '<leader><S-Tab>', ':tabprevious<cr>', { desc = 'Previous tab', silent = true, noremap = true })
