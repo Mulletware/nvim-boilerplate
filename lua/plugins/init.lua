@@ -102,8 +102,6 @@ return {
 
   'tpope/vim-fugitive',
 
-  'jbyuki/instant.nvim',
-
   'Rykka/lastbuf.vim',
 
   'vim-scripts/Rename2',
