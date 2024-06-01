@@ -156,7 +156,10 @@ map('n', '!', ':! ', { noremap = true, desc = 'Run shell command' })
 map('n', '<C-1>', ':r! ', { noremap = true, desc = 'Run shell command output to buffer' })
 
 -- map Space + lg to LazyGit
-map('n', '<Leader>lg', '<cmd>LazyGit<cr>', { desc = 'LazyGit' })
+map('n', '<Leader>lg', '<cmd>LazyGit<cr>', { desc = 'LazyGit', silent = true })
+--
+-- map Space + ld to LazyDocker
+map('n', '<Leader>ld', '<cmd>LazyDocker<cr>', { desc = 'LazyDocker', silent = true })
 
 -- map Space + gd to Gitsigns diffthis
 map('n', '<Leader>gd', '<cmd>Gitsigns diffthis<cr>', { desc = 'Git Diff (Normal Mode)' })
@@ -194,9 +197,6 @@ map('n', '<leader>rw', ':%s/\\<<C-r><C-w>\\>//g<left><left>', { noremap = true, 
 
 -- Undo Tree
 map({ 'i', 'n' }, '<C-S-u>', '<cmd>UndotreeToggle<cr>', { desc = 'Toggle Undo Tree' })
-
-map('n', '<Esc><Esc><Esc><Esc><Esc><Esc><Esc>', ':Dashboard<cr>', { desc = 'Open Dashboard' })
-
 map({ 'n', 'i', 'v' }, '<C-A-S-U>', '<cmd>UndotreeToggle<cr>', { desc = 'Toggle Undo Tree', silent = true })
 
 -- BufSurf
