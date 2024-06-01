@@ -7,7 +7,7 @@ if vim.g.neovide then
   map('v', '<C-S-C>', '"+y', { desc = 'Copy', silent = true }) -- Copy
   map({ 'n', 'i', 'v' }, '<C-S-V>', '"+P', { desc = 'Paste', silent = true }) -- Paste normal mode
 
-  local scaling_factor = 1.03
+  local scaling_factor = 1.01
   local reverse_scaling_factor = 1 / scaling_factor
 
   -- map Ctrl+=/- to increase and decrease font size
