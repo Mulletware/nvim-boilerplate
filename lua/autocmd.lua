@@ -85,22 +85,4 @@ vim.api.nvim_create_autocmd('VimEnter', {
   once = true,
 })
 
-vim.api.nvim_create_autocmd('BufDelete', {
-  callback = function(args)
-    local bufid = args.buf
-    local buffers = require('utils.buffers').get_buffers()
-    local bufferCount = require('utils.table').table_len(buffers)
-
-    if bufferCount < 3 then
-      for _, buffer in ipairs(buffers) do
-        if buffer == bufid then
-          print(vim.inspect(buffers))
-          vim.cmd ':Dashboard'
-          break
-        end
-      end
-    end
-  end,
-})
-
 require 'user.autocmd'
