@@ -1,19 +1,16 @@
 return {
-  'Mulletware/lazydocker.nvim',
+  'crnvl96/lazydocker.nvim',
   event = 'VeryLazy',
-  opts = {}, -- automatically calls `require("lazydocker").setup()`
-  config = function()
-    require('lazydocker').setup {
-      popup_window = {
-        position = '0%',
-        relative = 'editor',
-        size = {
-          width = '100%',
-          height = '100%',
-        },
+  opts = {
+    popup_window = {
+      position = '0%',
+      relative = 'editor',
+      size = {
+        width = '100%',
+        height = '100%',
       },
-    }
-  end,
+    },
+  }, -- automatically calls `require("lazydocker").setup()`
   dependencies = {
     'MunifTanjim/nui.nvim',
   },
