@@ -29,7 +29,7 @@ map({ 'n', 'v', 'i' }, '<C-c>', '"+', { desc = 'Activate system clipboard', sile
 -- <Leader>1-9 will jump to that tab
 for i = 1, 9 do
   map('n', '<Leader>' .. i, function()
-    require('utils.tabs').switch_to_tab(i)
+    require('utils.buffers').switch_to_tab(i)
   end, { desc = 'Go to buffer ' .. i })
 end
 
@@ -199,10 +199,15 @@ map('n', '<leader>rw', ':%s/\\<<C-r><C-w>\\>//g<left><left>', { noremap = true, 
 map({ 'i', 'n' }, '<C-S-u>', '<cmd>UndotreeToggle<cr>', { desc = 'Toggle Undo Tree' })
 map({ 'n', 'i', 'v' }, '<C-A-S-U>', '<cmd>UndotreeToggle<cr>', { desc = 'Toggle Undo Tree', silent = true })
 
+-- -- YankBank
+-- map({ 'n', 'v' }, '<leader>y', '<cmd>YankBank<cr>', { desc = 'Open YankBank', silent = true })
+
 -- BufSurf
 
 map({ 'n', 'i', 'v' }, '<A-l>', '<cmd>BufSurfForward<cr>', { noremap = true, silent = true })
 map({ 'n', 'i', 'v' }, '<A-h>', '<cmd>BufSurfBack<cr>', { noremap = true, silent = true })
+map({ 'n', 'i', 'v' }, '<A-ScrollWheelDown>', '<cmd>BufSurfForward<cr>', { noremap = true, silent = true })
+map({ 'n', 'i', 'v' }, '<A-ScrollWheelUp>', '<cmd>BufSurfBack<cr>', { noremap = true, silent = true })
 
 -- Tabs
 

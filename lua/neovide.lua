@@ -10,9 +10,26 @@ if vim.g.neovide then
   local scaling_factor = 1.01
   local reverse_scaling_factor = 1 / scaling_factor
 
-  -- map Ctrl+=/- to increase and decrease font size
-  map('n', '<C-=>', ':let g:neovide_scale_factor = g:neovide_scale_factor * ' .. scaling_factor .. '<CR>', { desc = 'Zoom in', silent = true })
-  map('n', '<C-->', ':let g:neovide_scale_factor = g:neovide_scale_factor * ' .. reverse_scaling_factor .. '<CR>', { desc = 'Zoom out', silent = true })
+  local last_scale_notify_id = nil
+
+  function show_scale_factor()
+    last_scale_notify_id = vim.notify(string.format('Scale: %.2f', vim.g.neovide_scale_factor), vim.log.levels.INFO, { replace = last_scale_notify_id })
+  end
+
+  function increase_scale_factor()
+    vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * scaling_factor
+    show_scale_factor()
+  end
+
+  function decrease_scale_factor()
+    vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * reverse_scaling_factor
+    show_scale_factor()
+  end
+
+  map('n', '<C-=>', increase_scale_factor, { desc = 'Zoom in', silent = true })
+  map('n', '<C-->', decrease_scale_factor, { desc = 'Zoom out', silent = true })
+  map('n', '<C-ScrollWheelUp>', increase_scale_factor, { desc = 'Zoom in', silent = true })
+  map('n', '<C-ScrollWheelDown>', decrease_scale_factor, { desc = 'Zoom out', silent = true })
 
   -- since we're in neovide we can leverage the full Ctrl+f and Ctrl+Shift+f search functionality normally intercepted by the shell
   map({ 'n', 'i' }, '<C-S-f>', '<cmd>Telescope live_grep<cr>', { desc = 'Find Text in Files (Normal Mode)' })
