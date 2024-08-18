@@ -208,6 +208,8 @@ map({ 'n', 'i', 'v' }, '<A-l>', '<cmd>BufSurfForward<cr>', { noremap = true, sil
 map({ 'n', 'i', 'v' }, '<A-h>', '<cmd>BufSurfBack<cr>', { noremap = true, silent = true })
 map({ 'n', 'i', 'v' }, '<A-ScrollWheelDown>', '<cmd>BufSurfForward<cr>', { noremap = true, silent = true })
 map({ 'n', 'i', 'v' }, '<A-ScrollWheelUp>', '<cmd>BufSurfBack<cr>', { noremap = true, silent = true })
+map({ 'n', 'i', 'v' }, '<X1Mouse>', '<cmd>BufSurfBack<cr>', { noremap = true, silent = true })
+map({ 'n', 'i', 'v' }, '<X2Mouse>', '<cmd>BufSurfForward<cr>', { noremap = true, silent = true })
 
 -- Tabs
 
