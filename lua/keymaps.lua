@@ -170,7 +170,7 @@ map('n', '<tab>', '<cmd>bnext<cr>', { desc = 'Switch to next tab' })
 map('n', '<S-tab>', '<cmd>bprevious<cr>', { desc = 'Switch to next tab' })
 
 map('n', '<leader>l', '<cmd>bnext<cr>', { desc = 'Switch to next tab' })
-map('n', '<leader>h', '<cmd>bprevious<cr>', { desc = 'Switch to next tab' })
+map('n', '<leader>h', '<cmd>bprevious<cr>', { desc = 'Switch to previous tab' })
 
 -- map Ctrl+Shift+Enter to ZenMode
 map({ 'n', 'i', 'v' }, '<C-S-Enter>', '<cmd>ZenMode<cr>', { desc = 'Zen Mode' })
