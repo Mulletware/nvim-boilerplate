@@ -1,6 +1,6 @@
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
 local map = require 'utils.map'
---
+
 return {
   '/mfussenegger/nvim-dap',
   dependencies = {
@@ -80,6 +80,8 @@ return {
     -- Install golang specific config
     require('dap-go').setup()
 
+    dap.set_log_level 'TRACE'
+
     dap.adapters.gdb = {
       type = 'executable',
       command = 'gdb',
@@ -89,7 +91,13 @@ return {
     dap.adapters.chrome = {
       type = 'executable',
       command = 'node',
-      args = { os.getenv 'HOME' .. '/src/vscode-chrome-debug/out/src/chromeDebug.js' }, -- TODO adjust
+      args = { vim.g.dap_home .. 'vscode-chrome-debug/out/src/chromeDebug.js' },
+    }
+
+    dap.adapters.firefox = {
+      type = 'executable',
+      command = 'node',
+      args = { vim.g.dap_home .. 'vscode-firefox-debug/dist/adapter.bundle.js' },
     }
 
     dap.configurations.javascript = {
@@ -102,11 +110,11 @@ return {
         sourceMaps = true,
         protocol = 'inspector',
         port = 9222,
-        webRoot = '${workspaceFolder}',
+        -- webRoot = '${workspaceFolder}',
       },
       {
-        name = 'Launch',
-        type = 'node2',
+        name = 'Node',
+        type = 'launch',
         request = 'launch',
         program = '${file}',
         cwd = vim.fn.getcwd(),
@@ -120,6 +128,17 @@ return {
         type = 'node2',
         request = 'attach',
         processId = require('dap.utils').pick_process,
+      },
+      {
+        name = 'Attach to Firefox (javascript) [unsupported]',
+        type = 'firefox',
+        request = 'attach',
+        program = '${file}',
+        cwd = vim.fn.getcwd(),
+        sourceMaps = true,
+        protocol = 'inspector',
+        port = 9223,
+        -- webRoot = '${workspaceFolder}',
       },
     }
 
@@ -147,24 +166,6 @@ return {
       },
     }
 
-    dap.adapters.firefox = {
-      type = 'executable',
-      command = 'node',
-      args = { os.getenv 'HOME' .. '/path/to/vscode-firefox-debug/dist/adapter.bundle.js' },
-    }
-
-    dap.configurations.typescript = {
-      {
-        name = 'Debug with Firefox',
-        type = 'firefox',
-        request = 'launch',
-        reAttach = true,
-        url = 'http://localhost:3000',
-        webRoot = '${workspaceFolder}',
-        firefoxExecutable = '/usr/bin/firefox',
-      },
-    }
-
     dap.adapters['pwa-node'] = {
       type = 'server',
       host = 'localhost',
@@ -179,7 +180,8 @@ return {
     -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#PHP
     dap.adapters.php = {
       type = 'executable',
-      command = 'php-debug-adapter',
+      command = 'node',
+      args = { vim.g.dap_home .. 'vscode-php-debug/out/phpDebug.js' },
     }
 
     dap.configurations.php = {
