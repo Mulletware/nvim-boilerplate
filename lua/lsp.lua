@@ -146,12 +146,27 @@ return { -- LSP Configuration & Plugins
       --    https://github.com/pmizio/typescript-tools.nvim
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
-      tsserver = {},
+      ts_ls = {
+        root_dir = function(fname)
+          local lspconfig = require 'lspconfig'
+          return lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git')(fname) or lspconfig.util.find_git_ancestor(fname)
+        end,
+        settings = {
+          packageManager = 'npm',
+          typescript = {
+            includePackageJsonAutoImports = 'off',
+          },
+        },
+      },
+
+      jsonls = {
+        json = {
+          schemas = require('schemastore').json.schemas(),
+          validate = { enable = true },
+        },
+      },
 
       lua_ls = {
-        -- cmd = {...},
-        -- filetypes = { ...},
-        -- capabilities = {},
         settings = {
           Lua = {
             completion = {
@@ -194,5 +209,8 @@ return { -- LSP Configuration & Plugins
         end,
       },
     }
+
+    local lspconfig = require 'lspconfig'
+
   end,
 }
