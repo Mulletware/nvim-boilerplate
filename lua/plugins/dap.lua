@@ -2,7 +2,7 @@
 local map = require 'utils.map'
 
 return {
-  '/mfussenegger/nvim-dap',
+  'mfussenegger/nvim-dap',
   dependencies = {
     -- Creates a beautiful debugger UI
     'rcarriga/nvim-dap-ui',
