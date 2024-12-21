@@ -224,4 +224,10 @@ map({ 'n', 'v' }, '<leader><S-Tab>', ':tabprevious<cr>', { desc = 'Previous tab'
 -- Rest
 map({ 'n', 'v' }, '<leader>rr', ':Rest run<cr>', { desc = 'Rest Run', silent = true, noremap = true })
 
+-- DapInfo
+map('n', '<Leader>br', '<cmd>DapInfoRevealBp<cr>', { desc = 'Dap Info Show Breakpoint Info', silent = true })
+map('n', '<Leader>bn', '<cmd>DapInfoNextBp<cr>', { desc = 'Dap Info Next Breakpoint', silent = true })
+map('n', '<Leader>bp', '<cmd>DapInfoPrevBp<cr>', { desc = 'Dap Info Previous Breakpoint', silent = true })
+map('n', '<Leader>bu', '<cmd>DapInfoUpdateBp<cr>', { desc = 'Dap Info Update Breakpoint', silent = true })
+
 require 'user.keymaps'
