@@ -235,10 +235,18 @@ require('lazy').setup({
               ['k'] = 'move_selection_previous',
               ['<C-j>'] = 'move_selection_next',
               ['<C-k>'] = 'move_selection_previous',
+              ['<ScrollWheelDown>'] = 'move_selection_next',
+              ['<ScrollWheelUp>'] = 'move_selection_previous',
+              ['<S-ScrollWheelDown>'] = 'preview_scrolling_down',
+              ['<S-ScrollWheelUp>'] = 'preview_scrolling_up',
             },
             i = {
               ['<C-j>'] = 'move_selection_next',
               ['<C-k>'] = 'move_selection_previous',
+              ['<ScrollWheelDown>'] = 'move_selection_next',
+              ['<ScrollWheelUp>'] = 'move_selection_previous',
+              ['<S-ScrollWheelDown>'] = 'preview_scrolling_down',
+              ['<S-ScrollWheelUp>'] = 'preview_scrolling_up',
               ['<c-enter>'] = 'to_fuzzy_refine',
             },
           },
@@ -353,7 +361,7 @@ require('lazy').setup({
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
--- put these stuff last to overwrite anything else
+-- put this stuff last to overwrite anything else
 require 'keymaps'
 require 'commands'
 require 'neovide'
