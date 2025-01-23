@@ -33,6 +33,8 @@ return { -- Autoformat
       python = { 'isort', 'black' },
       javascript = { { 'prettierd', 'prettier' } },
       javascriptreact = { { 'prettierd', 'prettier' } },
+      yaml = { 'yamlfmt', 'yamlfix' },
+      yml = { 'yamlfmt', 'yamlfix' },
     },
   },
 }

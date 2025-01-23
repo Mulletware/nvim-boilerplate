@@ -117,7 +117,7 @@ return { -- LSP Configuration & Plugins
         end
       end,
     })
-
+    --
     -- LSP servers and clients are able to communicate to each other what features they support.
     --  By default, Neovim doesn't support everything that is in the LSP specification.
     --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -170,7 +170,17 @@ return { -- LSP Configuration & Plugins
           },
         },
       },
+
+      yamlls = require 'lsp.yaml',
     }
+    --
+    -- -- Ensure all files will be formatted on save using conform, but only if a formatter exists
+    -- vim.api.nvim_create_autocmd('BufWritePre', {
+    --   pattern = '*',
+    --   callback = function()
+    --     require('conform').format { async = false, lsp_fallback = true }
+    --   end,
+    -- })
 
     -- Ensure the servers and tools above are installed
     --  To check the current status of installed tools and/or manually install
@@ -185,6 +195,7 @@ return { -- LSP Configuration & Plugins
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
+      'yamlfmt',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -204,6 +215,5 @@ return { -- LSP Configuration & Plugins
     }
 
     local lspconfig = require 'lspconfig'
-
   end,
 }
