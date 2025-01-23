@@ -190,7 +190,7 @@ return {
         request = 'launch',
         name = 'Listen for Xdebug',
         pathMappings = {
-          ['/var/www/html/src/api'] = vim.fn.getcwd() .. '/src/api',
+          ['/var/www/html/src'] = vim.fn.getcwd() .. '/src',
         },
         port = 9003,
       },
