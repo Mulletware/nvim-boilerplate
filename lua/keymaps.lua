@@ -224,6 +224,9 @@ map({ 'n', 'v' }, '<leader><S-Tab>', ':tabprevious<cr>', { desc = 'Previous tab'
 -- Rest
 map({ 'n', 'v' }, '<leader>rr', ':Rest run<cr>', { desc = 'Rest Run', silent = true, noremap = true })
 
+-- Escape.nvim
+map({ 'n', 'v' }, '<leader>e', ':lua require("escape").escape', { noremap = true, silent = true })
+
 -- DapInfo
 map('n', '<Leader>br', '<cmd>DapInfoRevealBp<cr>', { desc = 'Dap Info Show Breakpoint Info', silent = true })
 map('n', '<Leader>bn', '<cmd>DapInfoNextBp<cr>', { desc = 'Dap Info Next Breakpoint', silent = true })
