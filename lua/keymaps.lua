@@ -232,5 +232,10 @@ map('n', '<Leader>br', '<cmd>DapInfoRevealBp<cr>', { desc = 'Dap Info Show Break
 map('n', '<Leader>bn', '<cmd>DapInfoNextBp<cr>', { desc = 'Dap Info Next Breakpoint', silent = true })
 map('n', '<Leader>bp', '<cmd>DapInfoPrevBp<cr>', { desc = 'Dap Info Previous Breakpoint', silent = true })
 map('n', '<Leader>bu', '<cmd>DapInfoUpdateBp<cr>', { desc = 'Dap Info Update Breakpoint', silent = true })
+-- CodeCompanion
+map({ 'n', 'i', 'v' }, '<leader>cc', "<cmd>'<,'>CodeCompanionChat<cr>", { desc = 'Code Companion Prompt Chat', silent = true })
+map({ 'n', 'i', 'v' }, '<leader>cm', "<cmd>'<,'>CodeCompanionCmd<cr>", { desc = 'Code Companion Prompt Command', silent = true })
+map({ 'n', 'i', 'v' }, '<leader>cp', "<cmd>'<,'>CodeCompanion<cr>", { desc = 'Code Companion Prompt', silent = true })
+map({ 'n', 'i', 'v' }, '<leader>cn', "<cmd>'<,'>CodeCompanionActions<cr>", { desc = 'Code Companion Actions', silent = true })
 
 require 'user.keymaps'
