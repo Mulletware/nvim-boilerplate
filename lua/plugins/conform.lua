@@ -28,7 +28,7 @@ return { -- Autoformat
         }
       end
     end,
-    formatters_by_ft = {
+    stop_after_first = {
       lua = { 'stylua' },
       python = { 'isort', 'black' },
       javascript = { { 'prettierd', 'prettier' } },
