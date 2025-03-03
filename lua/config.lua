@@ -79,7 +79,7 @@ vim.opt.colorcolumn = '80'
 
 -- titlestring
 vim.opt.title = true
-vim.opt.titlestring = vim.fn.expand '%:p:h:t' -- vim.fn.fnamemodify(vim.getcwd(), ':t') -- = vim.fn.expand '%:h:t'
+vim.opt.titlestring = vim.fn.expand('%:p:h:t') .. ' - %{&filetype}'
 vim.opt.titleold = ''
 
 vim.g.lazygit_floating_window_scaling_factor = 0.98
