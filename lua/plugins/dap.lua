@@ -142,21 +142,9 @@ return {
       },
     }
 
-    dap.configurations.javascriptreact = { dap.configurations.javascript[1] }
-
-    dap.configurations.typescriptreact = { -- change to typescript if needed
-      {
-        name = 'Attach to Chrome (react)',
-        type = 'chrome',
-        request = 'attach',
-        program = '${file}',
-        cwd = vim.fn.getcwd(),
-        sourceMaps = true,
-        protocol = 'inspector',
-        port = 9222,
-        webRoot = '${workspaceFolder}',
-      },
-    }
+    dap.configurations.typescript = dap.configurations.javascript[1]
+    dap.configurations.typescriptreact = dap.configurations.javascript[1]
+    dap.configurations.javascriptreact = dap.configurations.javascript[1]
 
     dap.adapters.node2 = {
       type = 'executable',
