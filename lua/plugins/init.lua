@@ -94,6 +94,8 @@ return {
 
   'folke/twilight.nvim',
 
+  'folke/snacks.nvim',
+
   'Mohammed-Taher/AdvancedNewFile.nvim',
 
   'mfussenegger/nvim-lua-debugger',
@@ -123,8 +125,6 @@ return {
   'smoka7/hop.nvim',
 
   'nvim-telescope/telescope-symbols.nvim',
-
-  'stevearc/dressing.nvim',
 
   'ton/vim-bufsurf',
 
