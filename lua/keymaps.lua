@@ -130,9 +130,11 @@ end
 
 map('n', '<C-/>', comment, { noremap = true, desc = 'Comment line (Normal mode)', silent = true })
 map('i', '<C-/>', comment, { noremap = true, desc = 'Comment line (Visual Mode)', silent = true })
-map('v', '<C-/>', '<ESC><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<cr>gv=gv', { desc = 'Comment line (Visual Mode)', silent = true })
+map('v', '<C-/>', '<ESC><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<cr>gv=gv',
+  { desc = 'Comment line (Visual Mode)', silent = true })
 
-map('v', '<C-A-/>', '<C-\\><C-N><Cmd>lua require("Comment.api").toggle.blockwise(vim.fn.visualmode())<CR>', { noremap = true, silent = true })
+map('v', '<C-A-/>', '<C-\\><C-N><Cmd>lua require("Comment.api").toggle.blockwise(vim.fn.visualmode())<CR>',
+  { noremap = true, silent = true })
 
 map('v', '<C-S>?', function()
   require('Comment.api').toggle.blockwise(vim.fn.visualmode())
@@ -199,7 +201,8 @@ map('v', '<C-S-j>', ":m '>+1<cr>gv=gv", { desc = 'Move line down', silent = true
 map('v', '<C-S-k>', ":m '<-2<cr>gv=gv", { desc = 'Move line up', silent = true })
 
 -- Map <leader>rw to replace all instances of current word
-map('n', '<leader>rw', ':%s/\\<<C-r><C-w>\\>//g<left><left>', { noremap = true, desc = 'Replace all instances of current word' })
+map('n', '<leader>rw', ':%s/\\<<C-r><C-w>\\>//g<left><left>',
+  { noremap = true, desc = 'Replace all instances of current word' })
 
 -- Undo Tree
 map({ 'i', 'n' }, '<C-S-u>', '<cmd>UndotreeToggle<cr>', { desc = 'Toggle Undo Tree' })
@@ -234,10 +237,11 @@ map({ 'n', 'v' }, '<leader>rr', ':Rest run<cr>', { desc = 'Rest Run', silent = t
 map({ 'n', 'v' }, '<leader>e', ':lua require("escape").escape', { noremap = true, silent = true })
 
 -- DapInfo
-map('n', '<Leader>br', '<cmd>DapInfoRevealBp<cr>', { desc = 'Dap Info Show Breakpoint Info', silent = true })
-map('n', '<Leader>bn', '<cmd>DapInfoNextBp<cr>', { desc = 'Dap Info Next Breakpoint', silent = true })
-map('n', '<Leader>bp', '<cmd>DapInfoPrevBp<cr>', { desc = 'Dap Info Previous Breakpoint', silent = true })
-map('n', '<Leader>bu', '<cmd>DapInfoUpdateBp<cr>', { desc = 'Dap Info Update Breakpoint', silent = true })
+map('n', '<leader>br', '<cmd>DapInfoRevealBp<cr>', { desc = 'Dap Info Show Breakpoint Info', silent = true })
+map('n', '<leader>bn', '<cmd>DapInfoNextBp<cr>', { desc = 'Dap Info Next Breakpoint', silent = true })
+map('n', '<leader>bp', '<cmd>DapInfoPrevBp<cr>', { desc = 'Dap Info Previous Breakpoint', silent = true })
+map('n', '<leader>bu', '<cmd>DapInfoUpdateBp<cr>', { desc = 'Dap Info Update Breakpoint', silent = true })
+
 -- CodeCompanion
 map('n', '<leader>cc', "<cmd>CodeCompanionChat<cr>", { desc = 'Code Companion Prompt Chat', silent = true })
 map('n', '<leader>cm', "<cmd>CodeCompanionCmd<cr>", { desc = 'Code Companion Prompt Command', silent = true })
