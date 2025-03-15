@@ -56,6 +56,12 @@ map({ 'n', 'i' }, '<C-S-A-j>', ':resize -2<cr>', { desc = 'Resize horizontal pan
 map({ 'n', 'i' }, '<C-S-A-k>', ':resize +2<cr>', { desc = 'Resize horizontal pane up', silent = true })
 map({ 'n', 'i' }, '<C-S-A-l>', ':vertical resize +2<cr>', { desc = 'Resize vertical pane up', silent = true })
 
+map({ 'n', 'i' }, '<C-ScrollWheelUp>', ':vertical resize -2<cr>', { desc = 'Resize vertical pane down', silent = true })
+map({ 'n', 'i' }, '<C-ScrollWheelDown>', ':vertical resize +2<cr>',
+  { desc = 'Resize vertical pane down', silent = true })
+map({ 'n', 'i' }, '<C-S-ScrollWheelDown>', ':resize -2<cr>', { desc = 'Resize horizontal pane down', silent = true })
+map({ 'n', 'i' }, '<C-S-ScrollWheelUp>', ':resize +2<cr>', { desc = 'Resize horizontal pane up', silent = true })
+
 local closeTab = function()
   require('mini.bufremove').unshow()
 end
@@ -243,5 +249,17 @@ map('v', '<leader>cm', "<cmd>'<,'>CodeCompanionCmd<cr>", { desc = 'Code Companio
 map('v', '<leader>cp', "<cmd>'<,'>CodeCompanion<cr>", { desc = 'Code Companion Prompt', silent = true })
 map('v', '<leader>cn', "<cmd>'<,'>CodeCompanionActions<cr>", { desc = 'Code Companion Actions', silent = true })
 
+map("n", "gV", "`[v`]", { desc = 'Resume last selection' })
+
+map("n", "Y", "y$", { desc = 'Yank to end of line' })
+
+map({ 'n', 'i', 'v' }, '<ScrollWheelUp>', '<C-u>', { desc = 'Scroll up', silent = true })
+map({ 'n', 'i', 'v' }, '<ScrollWheelDown>', '<C-d>', { desc = 'Scroll down', silent = true })
+map({ 'n', 'i', 'v' }, '<ScrollWheelLeft>', 'zH', { desc = 'Scroll left', silent = true })
+map({ 'n', 'i', 'v' }, '<ScrollWheelRight>', 'zL', { desc = 'Scroll right', silent = true })
+map({ 'n', 'i', 'v' }, '<S-ScrollWheelUp>', '{', { desc = 'Scroll up to whitespace', silent = true })
+map({ 'n', 'i', 'v' }, '<S-ScrollWheelDown>', '}', { desc = 'Scroll down to whitespace', silent = true })
+map({ 'n', 'i', 'v' }, '<Mouse4>', '<cmd>BufSurfBack<cr>', { desc = 'Navigate back', silent = true })
+map({ 'n', 'i', 'v' }, '<Mouse5>', '<cmd>BufSurfForward<cr>', { desc = 'Navigate forward', silent = true })
 
 require 'user.keymaps'

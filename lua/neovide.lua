@@ -28,8 +28,8 @@ if vim.g.neovide then
 
   map('n', '<C-=>', increase_scale_factor, { desc = 'Zoom in', silent = true })
   map('n', '<C-->', decrease_scale_factor, { desc = 'Zoom out', silent = true })
-  map('n', '<C-ScrollWheelUp>', increase_scale_factor, { desc = 'Zoom in', silent = true })
-  map('n', '<C-ScrollWheelDown>', decrease_scale_factor, { desc = 'Zoom out', silent = true })
+  map({ 'n', 'i' }, '<A-ScrollWheelUp>', increase_scale_factor, { desc = 'Zoom in', silent = true })
+  map({ 'n', 'i' }, '<A-ScrollWheelDown>', decrease_scale_factor, { desc = 'Zoom out', silent = true })
 
   -- since we're in neovide we can leverage the full Ctrl+f and Ctrl+Shift+f search functionality normally intercepted by the shell
   map({ 'n', 'i' }, '<C-S-f>', '<cmd>Telescope live_grep<cr>', { desc = 'Find Text in Files (Normal Mode)' })

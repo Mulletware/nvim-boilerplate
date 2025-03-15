@@ -112,6 +112,22 @@ return { -- Autocompletion
       end
     end
 
+    local next = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end
+
+    local previous = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end
+
     cmp.setup {
       snippet = {
         expand = function(args)
@@ -142,21 +158,11 @@ return { -- Autocompletion
           end
         end, { 'i', 's' }),
 
-        ['<C-j>'] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          else
-            fallback()
-          end
-        end, { 'i', 's' }),
+        ['<C-j>'] = cmp.mapping(next, { 'i', 's' }),
+        ['<ScrollWheelDown>'] = cmp.mapping(next, { 'i', 's' }),
 
-        ['<C-k>'] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          else
-            fallback()
-          end
-        end, { 'i', 's' }),
+        ['<C-k>'] = cmp.mapping(previous, { 'i', 's' }),
+        ['<ScrollWheelUp'] = cmp.mapping(previous, { 'i', 's' }),
 
         ['<Esc>'] = cmp.mapping(function(fallback)
           local tookAction = false
