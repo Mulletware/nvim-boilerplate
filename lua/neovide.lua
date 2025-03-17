@@ -41,4 +41,6 @@ if vim.g.neovide then
   vim.schedule(function()
     vim.cmd 'NeovideFocus'
   end)
+
+  vim.g.neovide_input_macos_option_key_is_meta = 'both' -- enables option key on macos
 end
