@@ -7,22 +7,40 @@ return {
     -- The system_prompt type supports both a string and a function that returns a string. Using a function here allows dynamically updating the prompt with mcphub
 
     require("avante").setup({
+      -- provider = "gemini",
+      -- provider = "deepseek",
       provider = "openai",
       openai = {
         endpoint = "https://api.openai.com/v1",
-        model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
-        timeout = 30000,  -- timeout in milliseconds
-        temperature = 0,  -- adjust if needed
+        model = "o3-mini",        -- your desired model (or use gpt-4o, etc.)
+        timeout = 30000,          -- timeout in milliseconds
+        temperature = 0,          -- adjust if needed
         max_tokens = 4096,
-        -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
+        reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
       },
       behavior = {
         enable_cursor_planning_mode = true,
       },
+      cursor_applying_provider = 'openai',
+      vendors = {
+        --- ... existing vendors
+        groq = { -- define groq provider
+          __inherited_from = 'openai',
+          api_key_name = 'GROQ_API_KEY',
+          endpoint = 'https://api.groq.com/openai/v1/',
+          model = 'llama-3.3-70b-versatile',
+          max_tokens = 32768,
+        },
+        deepseek = {
+          __inherited_from = "openai",
+          api_key_name = "DEEPSEEK_API_KEY",
+          endpoint = "https://api.deepseek.com",
+          model = "deepseek-coder",
+        },
+      },
       custom_tools = {
         require("mcphub.extensions.avante").mcp_tool(),
       },
-
       system_prompt = function()
         local hub = require("mcphub").get_hub_instance()
         return hub:get_active_servers_prompt()

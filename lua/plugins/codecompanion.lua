@@ -10,7 +10,7 @@ return {
     require('codecompanion').setup {
       strategies = {
         chat = {
-          adapter = 'githubmodels',
+          adapter = 'openai',
           keymaps = {
             close = {
               modes = { n = "<leader>ccw", i = "<C-c><C-w>" },
@@ -24,7 +24,8 @@ return {
                 requires_approval = true
               }
             }
-          }
+          },
+          show_settings = false
         },
         slash_commands = {
           ["file"] = {
@@ -36,10 +37,10 @@ return {
           }
         },
         inline = {
-          adapter = 'githubmodels',
+          adapter = 'openai',
         },
         cmd = {
-          adapter = 'githubmodels',
+          adapter = 'openai',
         },
       },
       adapters = {
@@ -59,7 +60,7 @@ return {
           return require('codecompanion.adapters').extend('githubmodels', {
             schema = {
               model = {
-                -- default = 'DeepSeek-R1',
+                default = 'DeepSeek-R1',
               },
             },
           })
