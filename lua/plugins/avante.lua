@@ -9,7 +9,8 @@ return {
     require("avante").setup({
       -- provider = "gemini",
       -- provider = "deepseek",
-      provider = "openai",
+      provider = "openrouter",
+      -- provider = "openai",
       openai = {
         endpoint = "https://api.openai.com/v1",
         model = "o3-mini",        -- your desired model (or use gpt-4o, etc.)
@@ -36,6 +37,12 @@ return {
           api_key_name = "DEEPSEEK_API_KEY",
           endpoint = "https://api.deepseek.com",
           model = "deepseek-coder",
+        },
+        openrouter = {
+          __inherited_from = 'openai',
+          endpoint = 'https://openrouter.ai/api/v1',
+          api_key_name = 'OPENROUTER_API_KEY',
+          model = 'gemini-2.5-pro-exp-03-25',
         },
       },
       custom_tools = {
