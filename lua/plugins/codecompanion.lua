@@ -10,7 +10,7 @@ return {
     require('codecompanion').setup {
       strategies = {
         chat = {
-          adapter = 'openai',
+          adapter = 'openrouter_gemini',
           keymaps = {
             close = {
               modes = { n = "<leader>ccw", i = "<C-c><C-w>" },
@@ -37,10 +37,10 @@ return {
           }
         },
         inline = {
-          adapter = 'openai',
+          adapter = 'openrouter_gemini',
         },
         cmd = {
-          adapter = 'openai',
+          adapter = 'openrouter_gemini',
         },
       },
       adapters = {
@@ -65,6 +65,32 @@ return {
             },
           })
         end,
+        gemini = function()
+          return require('codecompanion.adapters').extend('gemini', {
+            env = {
+              api_key = vim.fn.getenv('GEMINI_API_KEY'),
+            },
+            schema = {
+              model = {
+                default = 'gemini-2.5-pro-exp-03-25',
+              },
+            },
+          })
+        end,
+        openrouter_gemini = function()
+          return require("codecompanion.adapters").extend("openai_compatible", {
+            env = {
+              url = "https://openrouter.ai/api",
+              api_key = vim.fn.getenv("OPENROUTER_API_KEY"),
+              chat_url = "/v1/chat/completions",
+            },
+            schema = {
+              model = {
+                default = "google/gemini-2.5-pro-exp-03-25:free",
+              },
+            },
+          })
+        end
       },
     }
     -- add 2 commands:
