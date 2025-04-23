@@ -224,7 +224,7 @@ map({ 'n', 'i', 'v' }, '<X2Mouse>', '<cmd>BufSurfForward<cr>', { noremap = true,
 
 map({ 'n', 'v' }, '<leader>n', ':enew<cr>', { desc = 'Blank new file', silent = true, noremap = true })
 map({ 'n', 'v' }, '<leader>tt', ':tab split<cr>', { desc = 'New Tab', silent = true, noremap = true })
-map({ 'n', 'v' }, '<leader>tc', ':tabclose<cr>', { desc = 'New Tab', silent = true, noremap = true })
+map({ 'n', 'v' }, '<leader>tc', ':tabclose<cr>', { desc = 'Close tab', silent = true, noremap = true })
 map({ 'n', 'v' }, '<leader>tl', ':tabNext<cr>', { desc = 'Next tab', silent = true, noremap = true })
 map({ 'n', 'v' }, '<leader>th', ':tabprevious<cr>', { desc = 'Previous tab', silent = true, noremap = true })
 map({ 'n', 'v' }, '<leader><Tab>', ':tabNext<cr>', { desc = 'Next tab', silent = true, noremap = true })
