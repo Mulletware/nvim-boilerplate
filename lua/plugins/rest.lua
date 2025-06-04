@@ -1,8 +1,8 @@
 return {
   {
-    'rest-nvim/rest.nvim',
+    'coffeeisknowledge/rest-format.nvim',
     ft = 'http',
-    dependencies = { 'luarocks.nvim' },
+    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
     config = function()
       vim.g.rest_nvim = {}
 

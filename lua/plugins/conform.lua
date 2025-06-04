@@ -28,13 +28,14 @@ return { -- Autoformat
         }
       end
     end,
-    stop_after_first = {
+    formatters_by_ft = {
       lua = { 'stylua' },
       python = { 'isort', 'black' },
       javascript = { { 'prettierd', 'prettier' } },
       javascriptreact = { { 'prettierd', 'prettier' } },
+      json = { 'jq' },
       yaml = { 'yamlfmt', 'yamlfix' },
       yml = { 'yamlfmt', 'yamlfix' },
-    },
+    }
   },
 }
