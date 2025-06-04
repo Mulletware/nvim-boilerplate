@@ -39,8 +39,8 @@ if vim.g.neovide then
   map({ 'n', 'i' }, '<C-f>', '<cmd>Telescope current_buffer_fuzzy_find<cr>',
     { desc = 'Find Text in Files (Normal Mode)' })
 
-  map({ 'n', 'i' }, '<C-tab>', '<cmd>bnext<cr>', 'Next Buffer/tab')
-  map({ 'n', 'i' }, '<C-S-tab>', '<cmd>bprevious<cr>', 'Next Buffer/tab')
+  map({ 'n', 'v', 'i' }, '<C-Tab>', ':tabnext<cr>', { desc = 'Next tab', silent = true })
+  map({ 'n', 'v', 'i' }, '<C-S-Tab>', ':tabprevious<cr>', { desc = 'Previous tab', silent = true })
 
   vim.schedule(function()
     vim.cmd 'NeovideFocus'
