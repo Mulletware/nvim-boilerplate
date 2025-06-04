@@ -7,10 +7,7 @@ return {
     -- The system_prompt type supports both a string and a function that returns a string. Using a function here allows dynamically updating the prompt with mcphub
 
     require("avante").setup({
-      -- provider = "gemini",
-      -- provider = "deepseek",
-      provider = "openrouter",
-      -- provider = "openai",
+      provider = "openai",
       openai = {
         endpoint = "https://api.openai.com/v1",
         model = "o3-mini",        -- your desired model (or use gpt-4o, etc.)
@@ -22,7 +19,7 @@ return {
       behavior = {
         enable_cursor_planning_mode = true,
       },
-      cursor_applying_provider = 'openai',
+      cursor_applying_provider = 'openrouter_gemini',
       vendors = {
         --- ... existing vendors
         groq = { -- define groq provider
@@ -38,11 +35,11 @@ return {
           endpoint = "https://api.deepseek.com",
           model = "deepseek-coder",
         },
-        openrouter = {
+        openrouter_gemini = {
           __inherited_from = 'openai',
           endpoint = 'https://openrouter.ai/api/v1',
           api_key_name = 'OPENROUTER_API_KEY',
-          model = 'gemini-2.5-pro-exp-03-25',
+          model = 'google/gemini-2.5-pro-exp-03-25:free',
         },
       },
       custom_tools = {
