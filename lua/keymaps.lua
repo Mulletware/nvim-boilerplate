@@ -38,8 +38,13 @@ end
 --  See `:help wincmd` for a list of all window commands
 map('n', '<C-h>', ':winc h<cr>', { desc = 'Move focus to the left pane', silent = true })
 map('n', '<C-l>', ':winc l<cr>', { desc = 'Move focus to the right pane', silent = true })
-map('n', '<C-j>', ':winc j<cr>', { desc = 'Move focus to the lower pane', silent = true })
 map('n', '<C-k>', ':winc k<cr>', { desc = 'Move focus to the upper pane', silent = true })
+map('n', '<C-j>', ':winc j<cr>', { desc = 'Move focus to the lower pane', silent = true })
+
+map({ 'n', 'i' }, '<C-ScrollWheelUp>', ':winc h<cr>', { desc = 'Move focus to the left pane', silent = true })
+map({ 'n', 'i' }, '<C-ScrollWheelDown>', ':winc l<cr>', { desc = 'Move focus to the right pane', silent = true })
+map({ 'n', 'i' }, '<C-S-ScrollWheelUp>', ':winc k<cr>', { desc = 'Move focus to the upper pane', silent = true })
+map({ 'n', 'i' }, '<C-S-ScrollWheelDown>', ':winc j<cr>', { desc = 'Move focus to the lower pane', silent = true })
 
 -- Window tiling
 map({ 'n', 'i' }, '<C-A-o>', ':only<cr>', { desc = 'Pane becomes the only one', silent = true })
@@ -56,11 +61,11 @@ map({ 'n', 'i' }, '<C-S-A-j>', ':resize -2<cr>', { desc = 'Resize horizontal pan
 map({ 'n', 'i' }, '<C-S-A-k>', ':resize +2<cr>', { desc = 'Resize horizontal pane up', silent = true })
 map({ 'n', 'i' }, '<C-S-A-l>', ':vertical resize +2<cr>', { desc = 'Resize vertical pane up', silent = true })
 
-map({ 'n', 'i' }, '<C-ScrollWheelUp>', ':vertical resize -2<cr>', { desc = 'Resize vertical pane down', silent = true })
-map({ 'n', 'i' }, '<C-ScrollWheelDown>', ':vertical resize +2<cr>',
+map({ 'n', 'i' }, '<C-A-ScrollWheelUp>', ':vertical resize -2<cr>', { desc = 'Resize vertical pane down', silent = true })
+map({ 'n', 'i' }, '<C-A-ScrollWheelDown>', ':vertical resize +2<cr>',
   { desc = 'Resize vertical pane down', silent = true })
-map({ 'n', 'i' }, '<C-S-ScrollWheelDown>', ':resize -2<cr>', { desc = 'Resize horizontal pane down', silent = true })
-map({ 'n', 'i' }, '<C-S-ScrollWheelUp>', ':resize +2<cr>', { desc = 'Resize horizontal pane up', silent = true })
+map({ 'n', 'i' }, '<C-A-S-ScrollWheelDown>', ':resize -2<cr>', { desc = 'Resize horizontal pane down', silent = true })
+map({ 'n', 'i' }, '<C-A-S-ScrollWheelUp>', ':resize +2<cr>', { desc = 'Resize horizontal pane up', silent = true })
 
 local closeTab = function()
   require('mini.bufremove').unshow()
@@ -173,12 +178,10 @@ map('n', '<Leader>ld', '<cmd>LazyDocker<cr>', { desc = 'LazyDocker', silent = tr
 map('n', '<Leader>gd', '<cmd>Gitsigns diffthis<cr>', { desc = 'Git Diff (Normal Mode)' })
 map('n', '<Leader>gg', '<cmd>Neogit<cr>', { desc = 'Neogit' })
 
--- map <Tab> to next tab
-map('n', '<tab>', '<cmd>bnext<cr>', { desc = 'Switch to next tab' })
-map('n', '<S-tab>', '<cmd>bprevious<cr>', { desc = 'Switch to next tab' })
+-- map <Tab> to next buffer
+map('n', '<Tab>', '<cmd>bnext<cr>', { desc = 'Switch to next tab' })
+map('n', '<S-Tab>', '<cmd>bprevious<cr>', { desc = 'Switch to next tab' })
 
-map('n', '<leader>l', '<cmd>bnext<cr>', { desc = 'Switch to next tab' })
-map('n', '<leader>h', '<cmd>bprevious<cr>', { desc = 'Switch to previous tab' })
 
 -- map Ctrl+Shift+Enter to ZenMode
 map({ 'n', 'i', 'v' }, '<C-S-Enter>', '<cmd>ZenMode<cr>', { desc = 'Zen Mode' })
@@ -227,11 +230,14 @@ map({ 'n', 'v' }, '<leader>tt', ':tab split<cr>', { desc = 'New Tab', silent = t
 map({ 'n', 'v' }, '<leader>tc', ':tabclose<cr>', { desc = 'Close tab', silent = true, noremap = true })
 map({ 'n', 'v' }, '<leader>tl', ':tabnext<cr>', { desc = 'Next tab', silent = true, noremap = true })
 map({ 'n', 'v' }, '<leader>th', ':tabprevious<cr>', { desc = 'Previous tab', silent = true, noremap = true })
-map({ 'n', 'v' }, '<leader><Tab>', ':tabnext<cr>', { desc = 'Next tab', silent = true, noremap = true })
-map({ 'n', 'v' }, '<leader><S-Tab>', ':tabprevious<cr>', { desc = 'Previous tab', silent = true, noremap = true })
+-- map({ 'n', 'v' }, '<leader><Tab>', ':tabnext<cr>', { desc = 'Next tab', silent = true, noremap = true })
+-- map({ 'n', 'v' }, '<leader><S-Tab>', ':tabprevious<cr>', { desc = 'Previous tab', silent = true, noremap = true })
+map({ 'n', 'v' }, '<leader>l', '<cmd>tabnext<cr>', { desc = 'Switch to next tab' })
+map({ 'n', 'v' }, '<leader>h', '<cmd>tabprevious<cr>', { desc = 'Switch to previous tab' })
 
 -- Rest
 map({ 'n', 'v' }, '<leader>rr', ':Rest run<cr>', { desc = 'Rest Run', silent = true, noremap = true })
+map({ 'n', 'v' }, '<leader>re', ':Telescope rest select_env<cr>', { desc = 'Rest Run', silent = true, noremap = true })
 
 -- Escape.nvim
 map({ 'n', 'v' }, '<leader>e', ':lua require("escape").escape', { noremap = true, silent = true })
@@ -253,12 +259,20 @@ map('v', '<leader>cm', "<cmd>'<,'>CodeCompanionCmd<cr>", { desc = 'Code Companio
 map('v', '<leader>cp', "<cmd>'<,'>CodeCompanion<cr>", { desc = 'Code Companion Prompt', silent = true })
 map('v', '<leader>cn', "<cmd>'<,'>CodeCompanionActions<cr>", { desc = 'Code Companion Actions', silent = true })
 
+map({ 'n', 'v' }, '<leader>cs', "<cmd>CodeCompanionSave<cr>", { desc = 'Code Companion Save Chats', silent = true })
+map({ 'n', 'v' }, '<leader>cs', "<cmd>CodeCompanionLoad<cr>", { desc = 'Code Companion Load Chats', silent = true })
+
 map("n", "gV", "`[v`]", { desc = 'Resume last selection' })
 
 map("n", "Y", "y$", { desc = 'Yank to end of line' })
 
 map({ 'n', 'i', 'v' }, '<ScrollWheelUp>', '<C-u>', { desc = 'Scroll up', silent = true })
 map({ 'n', 'i', 'v' }, '<ScrollWheelDown>', '<C-d>', { desc = 'Scroll down', silent = true })
+-- map({ 'n', 'v' }, '<ScrollWheelUp>', '10k', { desc = 'Scroll up', silent = true })
+-- map('i', '<ScrollWheelUp>', '<Escape>10ki', { desc = 'Scroll up', silent = true })
+-- map({ 'n', 'v' }, '<ScrollWheelDown>', '10j', { desc = 'Scroll down', silent = true })
+-- map('i', '<ScrollWheelDown>', '<Escape>10ji', { desc = 'Scroll down', silent = true })
+
 map({ 'n', 'i', 'v' }, '<ScrollWheelLeft>', 'zH', { desc = 'Scroll left', silent = true })
 map({ 'n', 'i', 'v' }, '<ScrollWheelRight>', 'zL', { desc = 'Scroll right', silent = true })
 map({ 'n', 'i', 'v' }, '<S-ScrollWheelUp>', '{', { desc = 'Scroll up to whitespace', silent = true })
