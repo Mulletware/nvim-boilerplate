@@ -110,6 +110,10 @@ map({ 'n', 'i' }, '<C-]>', '>>', { desc = 'Indent', silent = true })
 map({ 'n', 'i' }, '<C-[>', '<<', { desc = 'Indent Backward', silent = true })
 map('v', '<C-[>', '<gv', { desc = 'Indent Backward (Visual Mode)', silent = true })
 map('v', '<C-]>', '>gv', { desc = 'Indent (Visual Mode)', silent = true })
+map({ 'n', 'i' }, '<C-ScrollWheelRight>', '>>', { desc = 'Indent', silent = true })
+map({ 'n', 'i' }, '<C-ScrollWheelLeft>', '<<', { desc = 'Indent Backward', silent = true })
+map('v', '<C-ScrollWheelRight>', '>gv', { desc = 'Indent (Visual Mode)', silent = true })
+map('v', '<C-ScrollWheelLeft>', '<gv', { desc = 'Indent Backward (Visual Mode)', silent = true })
 
 -- map Ctrl+Shift+t to reopen last closed tab with LastBuf
 map({ 'n', 'i' }, '<C-S-t>', ':LastBuf', { desc = 'Reopen last closed tab', silent = true })
