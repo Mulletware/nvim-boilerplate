@@ -1,9 +1,9 @@
 return {
-  "greggh/claude-code.nvim",
+  'greggh/claude-code.nvim',
   dependencies = {
-    "nvim-lua/plenary.nvim", -- Required for git operations
+    'nvim-lua/plenary.nvim', -- Required for git operations
   },
   config = function()
-    require("claude-code").setup()
-  end
+    require('claude-code').setup()
+  end,
 }

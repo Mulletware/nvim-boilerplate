@@ -62,8 +62,7 @@ map({ 'n', 'i' }, '<C-S-A-k>', ':resize +2<cr>', { desc = 'Resize horizontal pan
 map({ 'n', 'i' }, '<C-S-A-l>', ':vertical resize +2<cr>', { desc = 'Resize vertical pane up', silent = true })
 
 map({ 'n', 'i' }, '<C-A-ScrollWheelUp>', ':vertical resize -2<cr>', { desc = 'Resize vertical pane down', silent = true })
-map({ 'n', 'i' }, '<C-A-ScrollWheelDown>', ':vertical resize +2<cr>',
-  { desc = 'Resize vertical pane down', silent = true })
+map({ 'n', 'i' }, '<C-A-ScrollWheelDown>', ':vertical resize +2<cr>', { desc = 'Resize vertical pane down', silent = true })
 map({ 'n', 'i' }, '<C-A-S-ScrollWheelDown>', ':resize -2<cr>', { desc = 'Resize horizontal pane down', silent = true })
 map({ 'n', 'i' }, '<C-A-S-ScrollWheelUp>', ':resize +2<cr>', { desc = 'Resize horizontal pane up', silent = true })
 
@@ -139,11 +138,9 @@ end
 
 map('n', '<C-/>', comment, { noremap = true, desc = 'Comment line (Normal mode)', silent = true })
 map('i', '<C-/>', comment, { noremap = true, desc = 'Comment line (Visual Mode)', silent = true })
-map('v', '<C-/>', '<ESC><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<cr>gv=gv',
-  { desc = 'Comment line (Visual Mode)', silent = true })
+map('v', '<C-/>', '<ESC><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<cr>gv=gv', { desc = 'Comment line (Visual Mode)', silent = true })
 
-map('v', '<C-A-/>', '<C-\\><C-N><Cmd>lua require("Comment.api").toggle.blockwise(vim.fn.visualmode())<CR>',
-  { noremap = true, silent = true })
+map('v', '<C-A-/>', '<C-\\><C-N><Cmd>lua require("Comment.api").toggle.blockwise(vim.fn.visualmode())<CR>', { noremap = true, silent = true })
 
 map('v', '<C-S>?', function()
   require('Comment.api').toggle.blockwise(vim.fn.visualmode())
@@ -186,7 +183,6 @@ map('n', '<Leader>gg', '<cmd>Neogit<cr>', { desc = 'Neogit' })
 map('n', '<Tab>', '<cmd>bnext<cr>', { desc = 'Switch to next tab' })
 map('n', '<S-Tab>', '<cmd>bprevious<cr>', { desc = 'Switch to next tab' })
 
-
 -- map Ctrl+Shift+Enter to ZenMode
 map({ 'n', 'i', 'v' }, '<C-S-Enter>', '<cmd>ZenMode<cr>', { desc = 'Zen Mode' })
 
@@ -208,8 +204,7 @@ map('v', '<C-S-j>', ":m '>+1<cr>gv=gv", { desc = 'Move line down', silent = true
 map('v', '<C-S-k>', ":m '<-2<cr>gv=gv", { desc = 'Move line up', silent = true })
 
 -- Map <leader>rw to replace all instances of current word
-map('n', '<leader>rw', ':%s/\\<<C-r><C-w>\\>//g<left><left>',
-  { noremap = true, desc = 'Replace all instances of current word' })
+map('n', '<leader>rw', ':%s/\\<<C-r><C-w>\\>//g<left><left>', { noremap = true, desc = 'Replace all instances of current word' })
 
 -- Undo Tree
 map({ 'i', 'n' }, '<C-S-u>', '<cmd>UndotreeToggle<cr>', { desc = 'Toggle Undo Tree' })
@@ -253,22 +248,22 @@ map('n', '<leader>bp', '<cmd>DapInfoPrevBp<cr>', { desc = 'Dap Info Previous Bre
 map('n', '<leader>bu', '<cmd>DapInfoUpdateBp<cr>', { desc = 'Dap Info Update Breakpoint', silent = true })
 
 -- CodeCompanion
-map('n', '<leader>cc', "<cmd>CodeCompanionChat<cr>", { desc = 'Code Companion Prompt Chat', silent = true })
-map('n', '<leader>cm', "<cmd>CodeCompanionCmd<cr>", { desc = 'Code Companion Prompt Command', silent = true })
-map('n', '<leader>cp', "<cmd>CodeCompanion<cr>", { desc = 'Code Companion Prompt', silent = true })
-map('n', '<leader>cn', "<cmd>CodeCompanionActions<cr>", { desc = 'Code Companion Actions', silent = true })
+map('n', '<leader>cc', '<cmd>CodeCompanionChat<cr>', { desc = 'Code Companion Prompt Chat', silent = true })
+map('n', '<leader>cm', '<cmd>CodeCompanionCmd<cr>', { desc = 'Code Companion Prompt Command', silent = true })
+map('n', '<leader>cp', '<cmd>CodeCompanion<cr>', { desc = 'Code Companion Prompt', silent = true })
+map('n', '<leader>cn', '<cmd>CodeCompanionActions<cr>', { desc = 'Code Companion Actions', silent = true })
 
 map('v', '<leader>cc', "<cmd>'<,'>CodeCompanionChat<cr>", { desc = 'Code Companion Prompt Chat', silent = true })
 map('v', '<leader>cm', "<cmd>'<,'>CodeCompanionCmd<cr>", { desc = 'Code Companion Prompt Command', silent = true })
 map('v', '<leader>cp', "<cmd>'<,'>CodeCompanion<cr>", { desc = 'Code Companion Prompt', silent = true })
 map('v', '<leader>cn', "<cmd>'<,'>CodeCompanionActions<cr>", { desc = 'Code Companion Actions', silent = true })
 
-map({ 'n', 'v' }, '<leader>cs', "<cmd>CodeCompanionSave<cr>", { desc = 'Code Companion Save Chats', silent = true })
-map({ 'n', 'v' }, '<leader>cs', "<cmd>CodeCompanionLoad<cr>", { desc = 'Code Companion Load Chats', silent = true })
+map({ 'n', 'v' }, '<leader>cs', '<cmd>CodeCompanionSave<cr>', { desc = 'Code Companion Save Chats', silent = true })
+map({ 'n', 'v' }, '<leader>cs', '<cmd>CodeCompanionLoad<cr>', { desc = 'Code Companion Load Chats', silent = true })
 
-map("n", "gV", "`[v`]", { desc = 'Resume last selection' })
+map('n', 'gV', '`[v`]', { desc = 'Resume last selection' })
 
-map("n", "Y", "y$", { desc = 'Yank to end of line' })
+map('n', 'Y', 'y$', { desc = 'Yank to end of line' })
 
 map({ 'n', 'i', 'v' }, '<ScrollWheelUp>', '<C-u>', { desc = 'Scroll up', silent = true })
 map({ 'n', 'i', 'v' }, '<ScrollWheelDown>', '<C-d>', { desc = 'Scroll down', silent = true })
