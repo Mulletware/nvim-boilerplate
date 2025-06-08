@@ -84,7 +84,7 @@ map({ 'n', 'i' }, '<C-s>', ':w<CR>', { desc = 'Save File', silent = true, norema
 map('n', '<Leader>s', ':w<CR>', { desc = 'Save File', silent = true })
 
 -- map Ctrl+F to telescope live_grep
-map({ 'n', 'i' }, '<C-f>', '<cmd>Telescope live_grep<cr>', { desc = 'Find Text in Files (Normal Mode)' })
+map({ 'n', 'i' }, '<C-S-f>', '<cmd>Telescope live_grep<cr>', { desc = 'Find Text in Files (Normal Mode)' })
 
 -- map Ctrl + w to close Buffer/tab
 -- map({ 'i', 'n' }, '<C-w>', closeTab, { desc = 'Close File', silent = true })
