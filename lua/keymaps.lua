@@ -265,15 +265,35 @@ map('n', 'gV', '`[v`]', { desc = 'Resume last selection' })
 
 map('n', 'Y', 'y$', { desc = 'Yank to end of line' })
 
-map({ 'n', 'i', 'v' }, '<ScrollWheelUp>', '<C-u>', { desc = 'Scroll up', silent = true })
-map({ 'n', 'i', 'v' }, '<ScrollWheelDown>', '<C-d>', { desc = 'Scroll down', silent = true })
--- map({ 'n', 'v' }, '<ScrollWheelUp>', '10k', { desc = 'Scroll up', silent = true })
--- map('i', '<ScrollWheelUp>', '<Escape>10ki', { desc = 'Scroll up', silent = true })
--- map({ 'n', 'v' }, '<ScrollWheelDown>', '10j', { desc = 'Scroll down', silent = true })
--- map('i', '<ScrollWheelDown>', '<Escape>10ji', { desc = 'Scroll down', silent = true })
+local makeScroll = function(direction)
+  local axis = (direction == 'h' or direction == 'l') and 'h' or 'v'
 
-map({ 'n', 'i', 'v' }, '<ScrollWheelLeft>', 'zH', { desc = 'Scroll left', silent = true })
-map({ 'n', 'i', 'v' }, '<ScrollWheelRight>', 'zL', { desc = 'Scroll right', silent = true })
+  return function()
+    local scroll = axis == 'v' and vim.opt.scroll:get() or vim.opt.sidescroll:get() or 10
+    vim.api.nvim_feedkeys(scroll .. direction, 'n', true)
+  end
+end
+
+local makeInsertScroll = function(direction)
+  local scrollFn = makeScroll(direction)
+
+  return function()
+    vim.cmd 'stopinsert'
+    scrollFn()
+    vim.api.nvim_feedkeys('i', 'n', true)
+  end
+end
+
+map({ 'n', 'v' }, '<ScrollWheelUp>', makeScroll 'k', { desc = 'Scroll up' })
+map({ 'n', 'v' }, '<ScrollWheelDown>', makeScroll 'j', { desc = 'Scroll down' })
+map('i', '<ScrollWheelUp>', makeInsertScroll 'k', { desc = 'Scroll up', silent = true })
+map('i', '<ScrollWheelDown>', makeInsertScroll 'j', { desc = 'Scroll down', silent = true })
+
+map({ 'n', 'v' }, '<ScrollWheelLeft>', makeScroll 'h', { desc = 'Scroll left' })
+map({ 'n', 'v' }, '<ScrollWheelRight>', makeScroll 'l', { desc = 'Scroll right' })
+map('i', '<ScrollWheelLeft>', makeInsertScroll 'h', { desc = 'Scroll left', silent = true })
+map('i', '<ScrollWheelRight>', makeInsertScroll 'l', { desc = 'Scroll Right', silent = true })
+
 map({ 'n', 'i', 'v' }, '<S-ScrollWheelUp>', '{', { desc = 'Scroll up to whitespace', silent = true })
 map({ 'n', 'i', 'v' }, '<S-ScrollWheelDown>', '}', { desc = 'Scroll down to whitespace', silent = true })
 map({ 'n', 'i', 'v' }, '<Mouse4>', '<cmd>BufSurfBack<cr>', { desc = 'Navigate back', silent = true })
