@@ -210,9 +210,6 @@ map('n', '<leader>rw', ':%s/\\<<C-r><C-w>\\>//g<left><left>', { noremap = true, 
 map({ 'i', 'n' }, '<C-S-u>', '<cmd>UndotreeToggle<cr>', { desc = 'Toggle Undo Tree' })
 map({ 'n', 'i', 'v' }, '<C-A-S-U>', '<cmd>UndotreeToggle<cr>', { desc = 'Toggle Undo Tree', silent = true })
 
--- -- YankBank
--- map({ 'n', 'v' }, '<leader>y', '<cmd>YankBank<cr>', { desc = 'Open YankBank', silent = true })
-
 -- BufSurf
 
 map({ 'n', 'i', 'v' }, '<A-l>', '<cmd>BufSurfForward<cr>', { noremap = true, silent = true })
@@ -263,6 +260,7 @@ map({ 'n', 'v' }, '<leader>cs', '<cmd>CodeCompanionLoad<cr>', { desc = 'Code Com
 
 map('n', 'gV', '`[v`]', { desc = 'Resume last selection' })
 
+map('n', '<C-S-y>', 'y^', { desc = 'Yank to beginning of line' })
 map('n', 'Y', 'y$', { desc = 'Yank to end of line' })
 
 local makeScroll = function(direction)
@@ -298,5 +296,8 @@ map({ 'n', 'i', 'v' }, '<S-ScrollWheelUp>', '{', { desc = 'Scroll up to whitespa
 map({ 'n', 'i', 'v' }, '<S-ScrollWheelDown>', '}', { desc = 'Scroll down to whitespace', silent = true })
 map({ 'n', 'i', 'v' }, '<Mouse4>', '<cmd>BufSurfBack<cr>', { desc = 'Navigate back', silent = true })
 map({ 'n', 'i', 'v' }, '<Mouse5>', '<cmd>BufSurfForward<cr>', { desc = 'Navigate forward', silent = true })
+
+-- Add normal paste back into command mode:
+map('c', '<C-S-V>', '<C-R>*', { desc = 'Paste from clipboard' })
 
 require 'user.keymaps'
